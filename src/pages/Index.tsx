@@ -111,7 +111,7 @@ const Index = () => {
         <div id="header-carousel" className="carousel">
           <div className="carousel-inner">
             <div className="relative carousel-item active">
-              <img className="w-full h-[600px] object-cover" src="/img/carousel-1.jpg" alt="Image" />
+              <img className="w-full h-[600px] object-cover" src="https://frabjous-licorice-577978.netlify.app/img/carousel-2.jpg" alt="Image" />
               <div className="absolute inset-0 flex flex-col items-center justify-content-center text-center">
                 <div className="p-3 max-w-[900px]">
                   <h4 className="text-white text-uppercase mb-3">Tours & Travel</h4>
