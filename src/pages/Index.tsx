@@ -131,7 +131,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
             <div className="md:col-span-1">
               <select className="w-full p-4 border" style={{ height: "47px" }}>
-                <option selected>Destination</option>
+                <option value="">Destination</option>
                 <option value="1">Destination 1</option>
                 <option value="2">Destination 2</option>
                 <option value="3">Destination 3</option>
@@ -140,7 +140,7 @@ const Index = () => {
             <div className="md:col-span-1">
               <DatePicker
                 selected={departDate}
-                onChange={(date) => setDepartDate(date)}
+                onChange={(date: Date) => setDepartDate(date)}
                 className="w-full p-4 border"
                 placeholderText="Depart Date"
               />
@@ -148,14 +148,14 @@ const Index = () => {
             <div className="md:col-span-1">
               <DatePicker
                 selected={returnDate}
-                onChange={(date) => setReturnDate(date)}
+                onChange={(date: Date) => setReturnDate(date)}
                 className="w-full p-4 border"
                 placeholderText="Return Date"
               />
             </div>
             <div className="md:col-span-1">
               <select className="w-full p-4 border" style={{ height: "47px" }}>
-                <option selected>Duration</option>
+                <option value="">Duration</option>
                 <option value="1">Duration 1</option>
                 <option value="2">Duration 2</option>
                 <option value="3">Duration 3</option>
