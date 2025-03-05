@@ -112,7 +112,7 @@ const Index = () => {
           <div className="carousel-inner">
             <div className="relative carousel-item active">
               <img className="w-full h-[600px] object-cover" src="/img/carousel-1.jpg" alt="Image" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+              <div className="absolute inset-0 flex flex-col items-center justify-content-center text-center">
                 <div className="p-3 max-w-[900px]">
                   <h4 className="text-white text-uppercase mb-3">Tours & Travel</h4>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-4">Let's Discover The World Together</h1>
@@ -385,6 +385,97 @@ const Index = () => {
         </div>
       </div>
       {/* Registration End */}
+
+      {/* Team Start */}
+      <div className="container mx-auto py-12">
+        <div className="text-center mb-8">
+          <h6 className="text-primary uppercase" style={{ letterSpacing: "5px" }}>Guides</h6>
+          <h1 className="text-3xl">Our Travel Guides</h1>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[1, 2, 3, 4].map((guide, index) => (
+            <div key={index} className="team-item bg-white mb-4">
+              <div className="relative overflow-hidden">
+                <img className="w-full" src={`/img/team-${guide}.jpg`} alt="Guide" />
+                <div className="team-social absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 hover:opacity-100">
+                  <a className="mx-1 bg-white p-2 rounded-full hover:bg-primary hover:text-white" href="#">
+                    <FontAwesomeIcon icon={faTwitter} />
+                  </a>
+                  <a className="mx-1 bg-white p-2 rounded-full hover:bg-primary hover:text-white" href="#">
+                    <FontAwesomeIcon icon={faFacebookF} />
+                  </a>
+                  <a className="mx-1 bg-white p-2 rounded-full hover:bg-primary hover:text-white" href="#">
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </a>
+                  <a className="mx-1 bg-white p-2 rounded-full hover:bg-primary hover:text-white" href="#">
+                    <FontAwesomeIcon icon={faLinkedinIn} />
+                  </a>
+                  </div>
+              </div>
+              <div className="text-center py-4">
+                <h5 className="truncate">Guide Name</h5>
+                <p className="m-0">Designation</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Team End */}
+
+      {/* Testimonial Start */}
+      <div className="container mx-auto py-12">
+        <div className="text-center mb-8">
+          <h6 className="text-primary uppercase" style={{ letterSpacing: "5px" }}>Testimonial</h6>
+          <h1 className="text-3xl">What Say Our Clients</h1>
+        </div>
+        <div className="testimonial-carousel">
+          {[1, 2, 3, 4].map((testimonial, index) => (
+            <div key={index} className="testimonial-item">
+              <div className="text-center">
+                <img className="mx-auto rounded-full w-24 h-24 object-cover" src={`/img/testimonial-${testimonial}.jpg`} alt="Client" />
+                <div className="bg-white p-4 mt-[-20px] relative shadow-md">
+                  <p className="mt-5">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                  <h5 className="truncate">Client Name</h5>
+                  <span>Profession</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        </div>
+      {/* Testimonial End */}
+      
+      {/* Blog Start */}
+      <div className="container mx-auto py-12">
+        <div className="text-center mb-8">
+          <h6 className="text-primary uppercase" style={{ letterSpacing: "5px" }}>Our Blog</h6>
+          <h1 className="text-3xl">Latest From Our Blog</h1>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[1, 2, 3].map((blog, index) => (
+            <div key={index} className="blog-item">
+              <div className="relative">
+                <img className="w-full h-60 object-cover" src={`/img/blog-${blog}.jpg`} alt="Blog" />
+                <div className="blog-date absolute top-4 right-4 bg-primary text-white w-16 h-16 flex flex-col items-center justify-center">
+                  <h6 className="font-bold mb-0">01</h6>
+                  <small className="uppercase">Jan</small>
+                </div>
+              </div>
+              <div className="bg-white p-4">
+                <div className="flex mb-2">
+                  <a className="text-primary uppercase no-underline" href="#">Admin</a>
+                  <span className="text-primary px-2">|</span>
+                  <a className="text-primary uppercase no-underline" href="#">Tours & Travel</a>
+                </div>
+                <a className="text-xl font-medium no-underline hover:text-primary" href="#">
+                  Dolor justo sea kasd lorem clita justo diam amet
+                </a>
+              </div>
+              </div>
+          ))}
+        </div>
+      </div>
+      {/* Blog End */}
 
       {/* Footer Start */}
       <div className="bg-dark text-white-50 py-5 mt-12">
