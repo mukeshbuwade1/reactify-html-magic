@@ -2,22 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faEnvelope, faPhoneAlt, faAngleDoubleUp, faMapMarkerAlt, 
-  faCalendarAlt, faUser, faStar, faCheck, faAngleRight,
-  faMoneyCheckAlt, faAward, faGlobe, faRoute, faTicketAlt, faHotel
+  faBars, faAngleRight
 } from '@fortawesome/free-solid-svg-icons';
 import { 
   faFacebookF, faTwitter, faLinkedinIn, faInstagram, faYoutube 
 } from '@fortawesome/free-brands-svg-icons';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
 import '../styles/globals.css';
 import HeaderCarousel from '../components/HeaderCarousel';
 import TestimonialCarousel from '../components/TestimonialCarousel';
+import BookingForm from '../components/BookingForm';
 
 const Index = () => {
-  const [departDate, setDepartDate] = useState<Date | null>(null);
-  const [returnDate, setReturnDate] = useState<Date | null>(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Handle scroll for back to top button
   useEffect(() => {
@@ -38,6 +35,10 @@ const Index = () => {
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
@@ -74,15 +75,15 @@ const Index = () => {
       {/* Topbar End */}
 
       {/* Navbar Start */}
-      <div className="relative">
+      <div className="navbar relative w-full z-10">
         <div className="container mx-auto relative py-3">
-          <nav className="bg-light shadow-lg py-3 px-5">
+          <nav className="bg-white lg:bg-transparent shadow-lg lg:shadow-none py-3 px-5">
             <div className="flex justify-between items-center">
               <a href="/" className="navbar-brand">
                 <h1 className="m-0 text-primary"><span className="text-dark">TRAVEL</span>ER</h1>
               </a>
-              <button className="lg:hidden">
-                <span className="navbar-toggler-icon"></span>
+              <button className="lg:hidden" onClick={toggleMobileMenu}>
+                <FontAwesomeIcon icon={faBars} className="text-2xl" />
               </button>
               <div className="hidden lg:flex items-center">
                 <a className="px-3 py-2 nav-item nav-link active" href="/">Home</a>
@@ -105,6 +106,18 @@ const Index = () => {
           </nav>
         </div>
       </div>
+      
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="mobile-menu lg:hidden">
+          <a className="block px-4 py-2 nav-item nav-link active" href="/">Home</a>
+          <a className="block px-4 py-2 nav-item nav-link" href="/about">About</a>
+          <a className="block px-4 py-2 nav-item nav-link" href="/service">Services</a>
+          <a className="block px-4 py-2 nav-item nav-link" href="/package">Tour Packages</a>
+          <a className="block px-4 py-2 nav-item nav-link" href="/pages">Pages</a>
+          <a className="block px-4 py-2 nav-item nav-link" href="/contact">Contact</a>
+        </div>
+      )}
       {/* Navbar End */}
 
       {/* Carousel Start */}
@@ -112,47 +125,7 @@ const Index = () => {
       {/* Carousel End */}
 
       {/* Booking Start */}
-      <div className="container mx-auto -mt-20 z-10 relative pb-5">
-        <div className="bg-light shadow p-8 bg-white">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
-            <div className="md:col-span-1">
-              <select className="w-full p-4 border" style={{ height: "47px" }}>
-                <option value="">Destination</option>
-                <option value="1">Destination 1</option>
-                <option value="2">Destination 2</option>
-                <option value="3">Destination 3</option>
-              </select>
-            </div>
-            <div className="md:col-span-1">
-              <DatePicker
-                selected={departDate}
-                onChange={(date: Date) => setDepartDate(date)}
-                className="w-full p-4 border"
-                placeholderText="Depart Date"
-              />
-            </div>
-            <div className="md:col-span-1">
-              <DatePicker
-                selected={returnDate}
-                onChange={(date: Date) => setReturnDate(date)}
-                className="w-full p-4 border"
-                placeholderText="Return Date"
-              />
-            </div>
-            <div className="md:col-span-1">
-              <select className="w-full p-4 border" style={{ height: "47px" }}>
-                <option value="">Duration</option>
-                <option value="1">Duration 1</option>
-                <option value="2">Duration 2</option>
-                <option value="3">Duration 3</option>
-              </select>
-            </div>
-            <div className="md:col-span-1">
-              <button className="w-full bg-primary text-white p-3">Submit</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <BookingForm />
       {/* Booking End */}
 
       {/* About Start */}
