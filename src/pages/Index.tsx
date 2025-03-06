@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -12,6 +11,8 @@ import {
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import '../styles/globals.css';
+import HeaderCarousel from '../components/HeaderCarousel';
+import TestimonialCarousel from '../components/TestimonialCarousel';
 
 const Index = () => {
   const [departDate, setDepartDate] = useState<Date | null>(null);
@@ -107,22 +108,7 @@ const Index = () => {
       {/* Navbar End */}
 
       {/* Carousel Start */}
-      <div className="relative p-0">
-        <div id="header-carousel" className="carousel">
-          <div className="carousel-inner">
-            <div className="relative carousel-item active">
-              <img className="w-full h-[600px] object-cover" src="https://frabjous-licorice-577978.netlify.app/img/carousel-2.jpg" alt="Image" />
-              <div className="absolute inset-0 flex flex-col items-center justify-content-center text-center">
-                <div className="p-3 max-w-[900px]">
-                  <h4 className="text-white text-uppercase mb-3">Tours & Travel</h4>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-4">Let's Discover The World Together</h1>
-                  <a href="#" className="btn btn-primary py-2 px-4 md:py-3 md:px-5 mt-2">Book Now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <HeaderCarousel />
       {/* Carousel End */}
 
       {/* Booking Start */}
@@ -428,21 +414,8 @@ const Index = () => {
           <h6 className="text-primary uppercase" style={{ letterSpacing: "5px" }}>Testimonial</h6>
           <h1 className="text-3xl">What Say Our Clients</h1>
         </div>
-        <div className="testimonial-carousel">
-          {[1, 2, 3, 4].map((testimonial, index) => (
-            <div key={index} className="testimonial-item">
-              <div className="text-center">
-                <img className="mx-auto rounded-full w-24 h-24 object-cover" src={`/img/testimonial-${testimonial}.jpg`} alt="Client" />
-                <div className="bg-white p-4 mt-[-20px] relative shadow-md">
-                  <p className="mt-5">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                  <h5 className="truncate">Client Name</h5>
-                  <span>Profession</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        </div>
+        <TestimonialCarousel />
+      </div>
       {/* Testimonial End */}
       
       {/* Blog Start */}
