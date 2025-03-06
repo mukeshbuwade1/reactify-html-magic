@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faEnvelope, faPhoneAlt, faAngleDoubleUp, faMapMarkerAlt, 
-  faBars, faAngleRight
+  faBars, faAngleRight, faCheck, faRoute, faTicketAlt, faHotel,
+  faUser, faStar, faCalendarAlt, faMoneyBillWave, faTrophy, faGlobeAmericas
 } from '@fortawesome/free-solid-svg-icons';
 import { 
   faFacebookF, faTwitter, faLinkedinIn, faInstagram, faYoutube 
@@ -16,7 +17,6 @@ const Index = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Handle scroll for back to top button
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -159,7 +159,7 @@ const Index = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="flex mb-4">
             <div className="flex-shrink-0 flex items-center justify-center bg-primary mr-3 h-[100px] w-[100px]">
-              <FontAwesomeIcon icon={faMoneyCheckAlt} className="text-2xl text-white" />
+              <FontAwesomeIcon icon={faMoneyBillWave} className="text-2xl text-white" />
             </div>
             <div className="flex flex-col">
               <h5>Competitive Pricing</h5>
@@ -168,7 +168,7 @@ const Index = () => {
           </div>
           <div className="flex mb-4">
             <div className="flex-shrink-0 flex items-center justify-center bg-primary mr-3 h-[100px] w-[100px]">
-              <FontAwesomeIcon icon={faAward} className="text-2xl text-white" />
+              <FontAwesomeIcon icon={faTrophy} className="text-2xl text-white" />
             </div>
             <div className="flex flex-col">
               <h5>Best Services</h5>
@@ -177,7 +177,7 @@ const Index = () => {
           </div>
           <div className="flex mb-4">
             <div className="flex-shrink-0 flex items-center justify-center bg-primary mr-3 h-[100px] w-[100px]">
-              <FontAwesomeIcon icon={faGlobe} className="text-2xl text-white" />
+              <FontAwesomeIcon icon={faGlobeAmericas} className="text-2xl text-white" />
             </div>
             <div className="flex flex-col">
               <h5>Worldwide Coverage</h5>
@@ -369,7 +369,7 @@ const Index = () => {
                   <a className="mx-1 bg-white p-2 rounded-full hover:bg-primary hover:text-white" href="#">
                     <FontAwesomeIcon icon={faLinkedinIn} />
                   </a>
-                  </div>
+                </div>
               </div>
               <div className="text-center py-4">
                 <h5 className="truncate">Guide Name</h5>
@@ -417,7 +417,7 @@ const Index = () => {
                   Dolor justo sea kasd lorem clita justo diam amet
                 </a>
               </div>
-              </div>
+            </div>
           ))}
         </div>
       </div>
