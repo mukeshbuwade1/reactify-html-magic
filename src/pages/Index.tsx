@@ -113,7 +113,7 @@ const Index = () => {
 
       {/* Booking Start */}
       <div className="container mx-auto -mt-20 z-10 relative pb-5">
-        <div className="bg-light shadow p-8">
+        <div className="bg-light shadow p-8 bg-white">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
             <div className="md:col-span-1">
               <select className="w-full p-4 border" style={{ height: "47px" }}>
