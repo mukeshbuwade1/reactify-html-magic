@@ -27,6 +27,19 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
     setActiveIndex((current) => (current === 1 ? 0 : 1));
   };
 
+
+  const StaticData= ({info, title, buttonTitle, buttonLink})=>{
+    return(
+      <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
+              <div className="p-3" style={{ maxWidth: '900px' }}>
+                <h4 className="text-white text-uppercase mb-3">{info}</h4>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-6">{title}</h1>
+                <a href={buttonLink||"#"} className="btn btn-primary py-2 px-4 md:py-3 md:px-5 mt-2 bg-white">{buttonTitle}</a>
+              </div>
+            </div>
+    )
+  }
+
   return (
     <div className="container-fluid p-0">
       <div id="header-carousel" className="relative overflow-hidden">
@@ -37,13 +50,7 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
             style={{ zIndex: activeIndex === 0 ? 1 : 0 }}
           >
             <img className="w-full h-full object-cover" src="/img/carousel-1.jpg" alt="Image" />
-            <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-              <div className="p-3" style={{ maxWidth: '900px' }}>
-                <h4 className="text-white text-uppercase mb-3">Tours & Travel</h4>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-4">Let's Discover The World Together</h1>
-                <a href="#" className="btn btn-primary py-2 px-4 md:py-3 md:px-5 mt-2">Book Now</a>
-              </div>
-            </div>
+            <StaticData title={"Let's Discover The World Together"} info={"Tours & Travel"} buttonTitle={"Book Now"} buttonLink={"#"}/>
           </div>
           
           {/* Second Slide */}
@@ -52,13 +59,7 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
             style={{ zIndex: activeIndex === 1 ? 1 : 0 }}
           >
             <img className="w-full h-full object-cover" src="/img/carousel-2.jpg" alt="Image" />
-            <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-              <div className="p-3" style={{ maxWidth: '900px' }}>
-                <h4 className="text-white text-uppercase mb-3">Tours & Travel</h4>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-4">Discover Amazing Places With Us</h1>
-                <a href="#" className="btn btn-primary py-2 px-4 md:py-3 md:px-5 mt-2">Book Now</a>
-              </div>
-            </div>
+            <StaticData title={"Discover Amazing Places With Us"} info={"Tours & Travel"} buttonTitle={"Book Now"} buttonLink={"#"}/>
           </div>
         </div>
         
