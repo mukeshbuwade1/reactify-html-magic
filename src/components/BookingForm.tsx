@@ -12,7 +12,7 @@ const BookingForm: React.FC = () => {
       <div className="bg-white shadow-lg p-4 md:p-8 mx-3 md:mx-0 -mt-20 md:-mt-24">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           <div className="md:col-span-1">
-            <select className="w-full p-4 border border-gray-300 text-gray-600" style={{ height: "56px" }}>
+            <select className="w-full p-4 border border-gray-300 text-gray-600 h-[56px]">
               <option value="" disabled selected>Destination</option>
               <option value="1">Destination 1</option>
               <option value="2">Destination 2</option>
@@ -23,22 +23,20 @@ const BookingForm: React.FC = () => {
             <DatePicker
               selected={departDate}
               onChange={(date: Date) => setDepartDate(date)}
-              className="w-full p-4 border border-gray-300 text-gray-600"
+              className="w-full p-4 border border-gray-300 text-gray-600 h-[56px]"
               placeholderText="Depart Date"
-              style={{ height: "56px" }}
             />
           </div>
           <div className="md:col-span-1">
             <DatePicker
               selected={returnDate}
               onChange={(date: Date) => setReturnDate(date)}
-              className="w-full p-4 border border-gray-300 text-gray-600"
+              className="w-full p-4 border border-gray-300 text-gray-600 h-[56px]"
               placeholderText="Return Date"
-              style={{ height: "56px" }}
             />
           </div>
           <div className="md:col-span-1">
-            <select className="w-full p-4 border border-gray-300 text-gray-600" style={{ height: "56px" }}>
+            <select className="w-full p-4 border border-gray-300 text-gray-600 h-[56px]">
               <option value="" disabled selected>Duration</option>
               <option value="1">3 Days</option>
               <option value="2">5 Days</option>
@@ -46,7 +44,7 @@ const BookingForm: React.FC = () => {
             </select>
           </div>
           <div className="md:col-span-1">
-            <button className="w-full bg-primary text-white p-4 hover:bg-opacity-90 transition-all font-medium" style={{ height: "56px" }}>Submit</button>
+            <button className="w-full bg-primary text-white p-4 hover:bg-opacity-90 transition-all font-medium h-[56px]">Submit</button>
           </div>
         </div>
       </div>
