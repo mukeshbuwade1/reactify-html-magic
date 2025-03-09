@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -135,24 +136,45 @@ const Index = () => {
 
       {/* About Start */}
       <div className="container mx-auto py-12 mt-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="h-[500px] relative">
-            <img className="absolute w-full h-full object-cover" src="/img/about.jpg" alt="About" />
-          </div>
-          <div className="pt-5 pb-5">
-            <div className="bg-white p-8 shadow-lg my-5">
-              <h6 className="text-primary uppercase" style={{ letterSpacing: "5px" }}>About Us</h6>
-              <h1 className="text-3xl mb-3">We Provide Best Tour Packages In Your Budget</h1>
-              <p>Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <img className="w-full" src="/img/about-1.jpg" alt="" />
-                </div>
-                <div>
-                  <img className="w-full" src="/img/about-2.jpg" alt="" />
-                </div>
+        {/* Mobile View (Vertical Stack) */}
+        <div className="block lg:hidden">
+          <div className="mx-4">
+            <img className="w-full h-auto object-cover mb-8" src="/lovable-uploads/f3ea782f-0b88-49b9-a1db-49db038c69af.png" alt="Traveler" />
+            
+            <div className="bg-white p-8">
+              <h6 className="text-[#7AB730] uppercase font-semibold tracking-wider mb-2">ABOUT US</h6>
+              <h1 className="text-3xl font-bold text-[#333] mb-4">We Provide Best Tour Packages In Your Budget</h1>
+              <p className="text-gray-600 mb-6">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <img className="w-full rounded-sm" src="/img/about-1.jpg" alt="Destination 1" />
+                <img className="w-full rounded-sm" src="/img/about-2.jpg" alt="Destination 2" />
               </div>
-              <a href="#" className="bg-primary text-white px-4 py-2 inline-block mt-1">Book Now</a>
+              
+              <a href="#" className="inline-block bg-[#7AB730] text-white px-8 py-3 font-medium transition-all hover:bg-opacity-90">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop View (Side by Side) */}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <img className="w-full h-auto object-cover" src="/lovable-uploads/c7a44790-e463-41ad-9a67-eaa0f200cabc.png" alt="Traveler" />
+            </div>
+            <div className="flex items-center">
+              <div className="bg-white p-8">
+                <h6 className="text-[#7AB730] uppercase font-semibold tracking-wider mb-2">ABOUT US</h6>
+                <h1 className="text-3xl font-bold text-[#333] mb-4">We Provide Best Tour Packages In Your Budget</h1>
+                <p className="text-gray-600 mb-6">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+                
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <img className="w-full rounded-sm" src="/img/about-1.jpg" alt="Destination 1" />
+                  <img className="w-full rounded-sm" src="/img/about-2.jpg" alt="Destination 2" />
+                </div>
+                
+                <a href="#" className="inline-block bg-[#7AB730] text-white px-8 py-3 font-medium transition-all hover:bg-opacity-90">Book Now</a>
+              </div>
             </div>
           </div>
         </div>
@@ -162,31 +184,31 @@ const Index = () => {
       {/* Feature Start */}
       <div className="container mx-auto pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex mb-4">
-            <div className="flex-shrink-0 flex items-center justify-center bg-primary mr-3 h-[100px] w-[100px]">
+          <div className="flex items-start p-4 bg-white border border-gray-100 shadow-sm">
+            <div className="flex-shrink-0 flex items-center justify-center bg-[#7AB730] mr-5 h-20 w-20">
               <FontAwesomeIcon icon={faMoneyBillWave} className="text-2xl text-white" />
             </div>
-            <div className="flex flex-col">
-              <h5>Competitive Pricing</h5>
-              <p className="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+            <div>
+              <h5 className="text-lg font-semibold mb-2">Competitive Pricing</h5>
+              <p className="text-gray-600">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
             </div>
           </div>
-          <div className="flex mb-4">
-            <div className="flex-shrink-0 flex items-center justify-center bg-primary mr-3 h-[100px] w-[100px]">
+          <div className="flex items-start p-4 bg-white border border-gray-100 shadow-sm">
+            <div className="flex-shrink-0 flex items-center justify-center bg-[#7AB730] mr-5 h-20 w-20">
               <FontAwesomeIcon icon={faTrophy} className="text-2xl text-white" />
             </div>
-            <div className="flex flex-col">
-              <h5>Best Services</h5>
-              <p className="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+            <div>
+              <h5 className="text-lg font-semibold mb-2">Best Services</h5>
+              <p className="text-gray-600">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
             </div>
           </div>
-          <div className="flex mb-4">
-            <div className="flex-shrink-0 flex items-center justify-center bg-primary mr-3 h-[100px] w-[100px]">
+          <div className="flex items-start p-4 bg-white border border-gray-100 shadow-sm">
+            <div className="flex-shrink-0 flex items-center justify-center bg-[#7AB730] mr-5 h-20 w-20">
               <FontAwesomeIcon icon={faGlobeAmericas} className="text-2xl text-white" />
             </div>
-            <div className="flex flex-col">
-              <h5>Worldwide Coverage</h5>
-              <p className="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+            <div>
+              <h5 className="text-lg font-semibold mb-2">Worldwide Coverage</h5>
+              <p className="text-gray-600">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
             </div>
           </div>
         </div>
