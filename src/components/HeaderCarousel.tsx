@@ -28,8 +28,8 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
   };
 
   return (
-    <div className="container-fluid p-0">
-      <div id="header-carousel" className="relative overflow-hidden" style={{ height: '600px' }}>
+    <div className="container-fluid p-0 relative">
+      <div id="header-carousel" className="relative overflow-hidden" style={{ height: '100vh', maxHeight: '800px' }}>
         <div className="relative w-full h-full">
           {/* First Slide */}
           <div 
@@ -37,11 +37,12 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
             style={{ zIndex: activeIndex === 0 ? 1 : 0 }}
           >
             <img className="w-full h-full object-cover" src="/img/carousel-1.jpg" alt="Image" />
-            <div className="carousel-caption d-flex flex-column align-items-center justify-content-center absolute inset-0 flex flex-col items-center justify-center">
-              <div className="p-3" style={{ maxWidth: '900px' }}>
-                <h4 className="text-white text-uppercase mb-3">Tours & Travel</h4>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-6">Let's Discover The World Together</h1>
-                <a href="#" className="btn btn-primary py-2 px-4 md:py-3 md:px-5 mt-2">Book Now</a>
+            <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+            <div className="carousel-caption absolute inset-0 flex flex-col items-center justify-center text-center">
+              <div className="p-3 max-w-4xl mx-auto">
+                <h4 className="text-white text-uppercase mb-3 text-lg md:text-xl">TOURS & TRAVEL</h4>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 leading-tight">Let's Discover The World Together</h1>
+                <a href="#" className="bg-primary text-white py-3 px-8 inline-block mt-4 text-lg font-medium hover:bg-opacity-90 transition-all">Book Now</a>
               </div>
             </div>
           </div>
@@ -52,11 +53,12 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
             style={{ zIndex: activeIndex === 1 ? 1 : 0 }}
           >
             <img className="w-full h-full object-cover" src="/img/carousel-2.jpg" alt="Image" />
-            <div className="carousel-caption d-flex flex-column align-items-center justify-content-center absolute inset-0 flex flex-col items-center justify-center">
-              <div className="p-3" style={{ maxWidth: '900px' }}>
-                <h4 className="text-white text-uppercase mb-3">Tours & Travel</h4>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-6">Discover Amazing Places With Us</h1>
-                <a href="#" className="btn btn-primary py-2 px-4 md:py-3 md:px-5 mt-2">Book Now</a>
+            <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+            <div className="carousel-caption absolute inset-0 flex flex-col items-center justify-center text-center">
+              <div className="p-3 max-w-4xl mx-auto">
+                <h4 className="text-white text-uppercase mb-3 text-lg md:text-xl">TOURS & TRAVEL</h4>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 leading-tight">Discover Amazing Places With Us</h1>
+                <a href="#" className="bg-primary text-white py-3 px-8 inline-block mt-4 text-lg font-medium hover:bg-opacity-90 transition-all">Book Now</a>
               </div>
             </div>
           </div>
@@ -65,15 +67,15 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
         {/* Navigation Buttons */}
         <button 
           onClick={handlePrev}
-          className="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 btn btn-dark w-[45px] h-[45px] flex items-center justify-center"
+          className="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 w-[45px] h-[45px] flex items-center justify-center bg-dark text-white hover:bg-opacity-80"
         >
-          <FontAwesomeIcon icon={faChevronLeft} className="text-white" />
+          <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button 
           onClick={handleNext}
-          className="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 btn btn-dark w-[45px] h-[45px] flex items-center justify-center"
+          className="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 w-[45px] h-[45px] flex items-center justify-center bg-dark text-white hover:bg-opacity-80"
         >
-          <FontAwesomeIcon icon={faChevronRight} className="text-white" />
+          <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
     </div>

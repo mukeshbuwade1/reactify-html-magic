@@ -16,6 +16,7 @@ import BookingForm from '../components/BookingForm';
 const Index = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +24,12 @@ const Index = () => {
         setShowBackToTop(true);
       } else {
         setShowBackToTop(false);
+      }
+
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
       }
     };
 
@@ -44,7 +51,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Topbar Start */}
-      <div className="hidden lg:block bg-light pt-3">
+      <div className="hidden lg:block topbar">
         <div className="container mx-auto">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
@@ -75,37 +82,35 @@ const Index = () => {
       {/* Topbar End */}
 
       {/* Navbar Start */}
-      <div className="navbar relative w-full z-10">
-        <div className="container mx-auto relative py-3">
-          <nav className="bg-white lg:bg-transparent shadow-lg lg:shadow-none py-3 px-5">
-            <div className="flex justify-between items-center">
-              <a href="/" className="navbar-brand">
-                <h1 className="m-0 text-primary"><span className="text-dark">TRAVEL</span>ER</h1>
-              </a>
-              <button className="lg:hidden" onClick={toggleMobileMenu}>
-                <FontAwesomeIcon icon={faBars} className="text-2xl" />
-              </button>
-              <div className="hidden lg:flex items-center">
-                <a className="px-3 py-2 nav-item nav-link active" href="/">Home</a>
-                <a className="px-3 py-2 nav-item nav-link" href="/about">About</a>
-                <a className="px-3 py-2 nav-item nav-link" href="/service">Services</a>
-                <a className="px-3 py-2 nav-item nav-link" href="/package">Tour Packages</a>
-                <div className="relative nav-item dropdown group">
-                  <a href="#" className="px-3 py-2 nav-link dropdown-toggle">Pages</a>
-                  <div className="absolute hidden group-hover:block mt-1 bg-white border-0 rounded-none w-48 z-10">
-                    <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/blog">Blog Grid</a>
-                    <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/single">Blog Detail</a>
-                    <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/destination">Destination</a>
-                    <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/guide">Travel Guides</a>
-                    <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/testimonial">Testimonial</a>
-                  </div>
+      <nav className={`navbar ${scrolled ? 'shadow-md' : ''}`}>
+        <div className="container mx-auto">
+          <div className="flex justify-between items-center py-3 px-4">
+            <a href="/" className="navbar-brand flex-shrink-0">
+              <h1 className="m-0 text-3xl"><span className="text-dark">TRAVEL</span><span className="text-primary">ER</span></h1>
+            </a>
+            <button className="lg:hidden text-dark" onClick={toggleMobileMenu}>
+              <FontAwesomeIcon icon={faBars} className="text-2xl" />
+            </button>
+            <div className="hidden lg:flex items-center">
+              <a className="px-4 py-2 nav-item nav-link active" href="/">Home</a>
+              <a className="px-4 py-2 nav-item nav-link" href="/about">About</a>
+              <a className="px-4 py-2 nav-item nav-link" href="/service">Services</a>
+              <a className="px-4 py-2 nav-item nav-link" href="/package">Tour Packages</a>
+              <div className="relative nav-item dropdown group">
+                <a href="#" className="px-4 py-2 nav-link dropdown-toggle">Pages</a>
+                <div className="absolute hidden group-hover:block mt-1 bg-white border-0 rounded-none w-48 z-10 shadow-lg">
+                  <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/blog">Blog Grid</a>
+                  <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/single">Blog Detail</a>
+                  <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/destination">Destination</a>
+                  <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/guide">Travel Guides</a>
+                  <a className="block px-4 py-2 dropdown-item hover:bg-light" href="/testimonial">Testimonial</a>
                 </div>
-                <a className="px-3 py-2 nav-item nav-link" href="/contact">Contact</a>
               </div>
+              <a className="px-4 py-2 nav-item nav-link" href="/contact">Contact</a>
             </div>
-          </nav>
+          </div>
         </div>
-      </div>
+      </nav>
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
@@ -129,7 +134,7 @@ const Index = () => {
       {/* Booking End */}
 
       {/* About Start */}
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto py-12 mt-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="h-[500px] relative">
             <img className="absolute w-full h-full object-cover" src="/img/about.jpg" alt="About" />

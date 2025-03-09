@@ -30,6 +30,14 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--primary) !important;
 }
 
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-dark {
+  background-color: var(--dark);
+}
+
 .btn-primary {
   background-color: var(--primary);
   border-color: var(--primary);
@@ -66,10 +74,20 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--dark);
 }
 
+.navbar {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
 .navbar-light .navbar-nav .nav-link {
   padding: 30px 15px;
   color: var(--dark);
   outline: none;
+  font-weight: 500;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
@@ -79,13 +97,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .booking {
   position: relative;
-  margin-top: -100px !important;
-  z-index: 10;
+  margin-top: -40px !important;
+  z-index: 99;
 }
 
 @media (max-width: 768px) {
   .booking {
-    margin-top: -30px !important;
+    margin-top: -20px !important;
   }
 }
 
@@ -246,14 +264,6 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(255, 255, 255, .5);
 }
 
-.navbar {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 999;
-}
-
 .navbar-toggler {
   border: none;
   outline: none;
@@ -268,6 +278,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 15px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   z-index: 998;
+  transition: all 0.3s ease;
 }
 
 @media (min-width: 992px) {
@@ -295,4 +306,14 @@ h1, h2, h3, h4, h5, h6 {
 .btn-dark:hover {
   background-color: #000000;
   border-color: #000000;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.topbar {
+  padding: 10px 0;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eeeeee;
 }

@@ -8,12 +8,12 @@ const BookingForm: React.FC = () => {
   const [returnDate, setReturnDate] = useState<Date | null>(null);
 
   return (
-    <div className="container mx-auto booking">
-      <div className="bg-white shadow-lg p-8">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+    <div className="container mx-auto booking relative z-10">
+      <div className="bg-white shadow-lg p-4 md:p-8 mx-3 md:mx-0 -mt-20 md:-mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           <div className="md:col-span-1">
-            <select className="w-full p-4 border" style={{ height: "47px" }}>
-              <option value="">Destination</option>
+            <select className="w-full p-4 border border-gray-300 text-gray-600" style={{ height: "56px" }}>
+              <option value="" disabled selected>Destination</option>
               <option value="1">Destination 1</option>
               <option value="2">Destination 2</option>
               <option value="3">Destination 3</option>
@@ -23,28 +23,30 @@ const BookingForm: React.FC = () => {
             <DatePicker
               selected={departDate}
               onChange={(date: Date) => setDepartDate(date)}
-              className="w-full p-4 border"
+              className="w-full p-4 border border-gray-300 text-gray-600"
               placeholderText="Depart Date"
+              style={{ height: "56px" }}
             />
           </div>
           <div className="md:col-span-1">
             <DatePicker
               selected={returnDate}
               onChange={(date: Date) => setReturnDate(date)}
-              className="w-full p-4 border"
+              className="w-full p-4 border border-gray-300 text-gray-600"
               placeholderText="Return Date"
+              style={{ height: "56px" }}
             />
           </div>
           <div className="md:col-span-1">
-            <select className="w-full p-4 border" style={{ height: "47px" }}>
-              <option value="">Duration</option>
-              <option value="1">Duration 1</option>
-              <option value="2">Duration 2</option>
-              <option value="3">Duration 3</option>
+            <select className="w-full p-4 border border-gray-300 text-gray-600" style={{ height: "56px" }}>
+              <option value="" disabled selected>Duration</option>
+              <option value="1">3 Days</option>
+              <option value="2">5 Days</option>
+              <option value="3">7 Days</option>
             </select>
           </div>
           <div className="md:col-span-1">
-            <button className="w-full bg-primary text-white p-3">Submit</button>
+            <button className="w-full bg-primary text-white p-4 hover:bg-opacity-90 transition-all font-medium" style={{ height: "56px" }}>Submit</button>
           </div>
         </div>
       </div>
