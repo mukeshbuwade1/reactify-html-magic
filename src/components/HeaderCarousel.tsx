@@ -2,13 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { useBookNowDialog } from '../hooks/useBookNowDialog';
 
 interface HeaderCarouselProps {
   interval?: number;
+  bookNowClick?:(e: React.MouseEvent)=>void
 }
 
-const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
+const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 ,bookNowClick}) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { openDialog } = useBookNowDialog();
   
   // Set up auto rotation
   useEffect(() => {
@@ -27,6 +30,15 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
     setActiveIndex((current) => (current === 1 ? 0 : 1));
   };
 
+  const handleBookNowClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (bookNowClick) {
+      bookNowClick(e);
+    } else {
+      openDialog();
+    }
+  };
+
   return (
     <div className="container-fluid p-0 relative">
       <div id="header-carousel" className="relative overflow-hidden" style={{ height: '100vh', maxHeight: '800px' }}>
@@ -42,7 +54,7 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
               <div className="p-3 max-w-4xl mx-auto">
                 <h4 className="text-white text-uppercase mb-3 text-lg md:text-xl font-semibold">TOURS & TRAVEL</h4>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 leading-tight">Let's Discover The World Together</h1>
-                <a href="#" className="bg-primary text-white py-3 px-8 inline-block mt-4 text-lg font-medium hover:bg-opacity-90 transition-all">Book Now</a>
+                <a href="#" onClick={handleBookNowClick} className="bg-primary text-white py-3 px-8 inline-block mt-4 text-lg font-medium hover:bg-opacity-90 transition-all">Book Now</a>
               </div>
             </div>
           </div>
@@ -56,9 +68,9 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
             <div className="absolute inset-0 bg-black bg-opacity-30"></div>
             <div className="carousel-caption absolute inset-0 flex flex-col items-center justify-center text-center">
               <div className="p-3 max-w-4xl mx-auto">
-                <h4 className="text-white text-uppercase mb-3 text-lg md:text-xl">TOURS & TRAVEL</h4>
+                <h4 className="text-white text-uppercase mb-3 text-lg md:text-xl font-semibold">TOURS & TRAVEL</h4>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 leading-tight">Discover Amazing Places With Us</h1>
-                <a href="#" className="bg-primary text-white py-3 px-8 inline-block mt-4 text-lg font-medium hover:bg-opacity-90 transition-all">Book Now</a>
+                <a href="#" onClick={handleBookNowClick} className="bg-primary text-white py-3 px-8 inline-block mt-4 text-lg font-medium hover:bg-opacity-90 transition-all">Book Now</a>
               </div>
             </div>
           </div>
