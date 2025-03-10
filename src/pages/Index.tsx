@@ -29,11 +29,14 @@ import "../styles/globals.css";
 import HeaderCarousel from "../components/HeaderCarousel";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import BookingForm from "../components/BookingForm";
+import BookNowDialog from "../components/BookNowDialog";
+import { useBookNowDialog } from "../hooks/useBookNowDialog";
 
 const Index = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { isOpen, openDialog, closeDialog } = useBookNowDialog();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,8 +68,16 @@ const Index = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const handleBookNowClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    openDialog();
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
+      {/* Book Now Dialog */}
+      <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
+      
       {/* Topbar Start */}
       <div className="hidden lg:block topbar pb-10" >
         <div className="container mx-auto">
@@ -86,9 +97,6 @@ const Index = () => {
               <a href="https://www.facebook.com/share/18D6nkSw6Z/?mibextid=wwXIfr" target="_blank" className="text-primary px-3">
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>
-              {/* <a href="" className="text-primary px-3">
-                <FontAwesomeIcon icon={faTwitter} />
-              </a> */}
               <a href="https://www.linkedin.com/company/106526320/admin/dashboard/" target="_blank" className="text-primary px-3">
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
@@ -105,81 +113,80 @@ const Index = () => {
       {/* Topbar End */}
 
       {/* Navbar Start */}
-     
-        <nav
-          className={`navbar top-0 lg:top-12 bg-transparent`}
-        >
-          <div className={`container mx-auto shadow-md bg-white shadow-2xl w-full lg:w-4/5`} style={{
-            
-          }}>
-            <div className="flex justify-between items-center py-3 px-4">
-              <a href="/" className="navbar-brand flex-shrink-0">
-                <img className="hidden sm:flex h-[30px]" src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/fullLogo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9mdWxsTG9nby5wbmciLCJpYXQiOjE3NDE1ODUzNTUsImV4cCI6MTg5OTI2NTM1NX0.5_NtBChxFgWPnW9yUcjHZlRrqn0p2Nwpx5RwUbhZcfc"/>
-                <img className="flex sm:hidden h-[30px]" src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/logoIcon.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9sb2dvSWNvbi5wbmciLCJpYXQiOjE3NDE1ODY0MDMsImV4cCI6MTc1NDU0NjQwM30.vYYPoSuivLsQ6NlVPqqZrghhsS89k1ekl1sg1ppXWeU" />
+      <nav
+        className={`navbar top-0 lg:top-12 bg-transparent`}
+      >
+        <div className={`container mx-auto shadow-md bg-white shadow-2xl w-full lg:w-4/5`} style={{
+          
+        }}>
+          <div className="flex justify-between items-center py-3 px-4">
+            <a href="/" className="navbar-brand flex-shrink-0">
+              <img className="hidden sm:flex h-[30px]" src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/fullLogo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9mdWxsTG9nby5wbmciLCJpYXQiOjE3NDE1ODUzNTUsImV4cCI6MTg5OTI2NTM1NX0.5_NtBChxFgWPnW9yUcjHZlRrqn0p2Nwpx5RwUbhZcfc"/>
+              <img className="flex sm:hidden h-[30px]" src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/logoIcon.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9sb2dvSWNvbi5wbmciLCJpYXQiOjE3NDE1ODY0MDMsImV4cCI6MTc1NDU0NjQwM30.vYYPoSuivLsQ6NlVPqqZrghhsS89k1ekl1sg1ppXWeU" />
+            </a>
+            <button
+              className="lg:hidden text-dark"
+              onClick={toggleMobileMenu}
+            >
+              <FontAwesomeIcon icon={faBars} className="text-2xl" />
+            </button>
+            <div className="hidden lg:flex items-center">
+              <a className="px-4 py-2 nav-item nav-link active" href="/">
+                Home
               </a>
-              <button
-                className="lg:hidden text-dark"
-                onClick={toggleMobileMenu}
-              >
-                <FontAwesomeIcon icon={faBars} className="text-2xl" />
-              </button>
-              <div className="hidden lg:flex items-center">
-                <a className="px-4 py-2 nav-item nav-link active" href="/">
-                  Home
+              <a className="px-4 py-2 nav-item nav-link" href="/about">
+                About
+              </a>
+              <a className="px-4 py-2 nav-item nav-link" href="/service">
+                Services
+              </a>
+              <a className="px-4 py-2 nav-item nav-link" href="/package">
+                Tour Packages
+              </a>
+              <div className="relative nav-item dropdown group">
+                <a href="#" className="px-4 py-2 nav-link dropdown-toggle">
+                  Pages
                 </a>
-                <a className="px-4 py-2 nav-item nav-link" href="/about">
-                  About
-                </a>
-                <a className="px-4 py-2 nav-item nav-link" href="/service">
-                  Services
-                </a>
-                <a className="px-4 py-2 nav-item nav-link" href="/package">
-                  Tour Packages
-                </a>
-                <div className="relative nav-item dropdown group">
-                  <a href="#" className="px-4 py-2 nav-link dropdown-toggle">
-                    Pages
+                <div className="absolute hidden group-hover:block mt-1 bg-white border-0 rounded-none w-48 z-10 shadow-lg">
+                  <a
+                    className="block px-4 py-2 dropdown-item hover:bg-light"
+                    href="/blog"
+                  >
+                    Blog Grid
                   </a>
-                  <div className="absolute hidden group-hover:block mt-1 bg-white border-0 rounded-none w-48 z-10 shadow-lg">
-                    <a
-                      className="block px-4 py-2 dropdown-item hover:bg-light"
-                      href="/blog"
-                    >
-                      Blog Grid
-                    </a>
-                    <a
-                      className="block px-4 py-2 dropdown-item hover:bg-light"
-                      href="/single"
-                    >
-                      Blog Detail
-                    </a>
-                    <a
-                      className="block px-4 py-2 dropdown-item hover:bg-light"
-                      href="/destination"
-                    >
-                      Destination
-                    </a>
-                    <a
-                      className="block px-4 py-2 dropdown-item hover:bg-light"
-                      href="/guide"
-                    >
-                      Travel Guides
-                    </a>
-                    <a
-                      className="block px-4 py-2 dropdown-item hover:bg-light"
-                      href="/testimonial"
-                    >
-                      Testimonial
-                    </a>
-                  </div>
+                  <a
+                    className="block px-4 py-2 dropdown-item hover:bg-light"
+                    href="/single"
+                  >
+                    Blog Detail
+                  </a>
+                  <a
+                    className="block px-4 py-2 dropdown-item hover:bg-light"
+                    href="/destination"
+                  >
+                    Destination
+                  </a>
+                  <a
+                    className="block px-4 py-2 dropdown-item hover:bg-light"
+                    href="/guide"
+                  >
+                    Travel Guides
+                  </a>
+                  <a
+                    className="block px-4 py-2 dropdown-item hover:bg-light"
+                    href="/testimonial"
+                  >
+                    Testimonial
+                  </a>
                 </div>
-                <a className="px-4 py-2 nav-item nav-link" href="/contact">
-                  Contact
-                </a>
               </div>
+              <a className="px-4 py-2 nav-item nav-link" href="/contact">
+                Contact
+              </a>
             </div>
           </div>
-        </nav>
+        </div>
+      </nav>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
@@ -236,7 +243,7 @@ const Index = () => {
                 We Provide Best Tour Packages In Your Budget
               </h1>
               <p className="font-light text-gray-500">
-              At MapMyTour, we make travel hassle-free and memorable! Our expertly curated tour packages ensure you experience the best destinations with ease. Whether you need a local travel guide, flight or train tickets, or comfortable hotel stays, we’ve got you covered. Let us handle the details while you enjoy the journey! 🌍✈️🏨
+              At MapMyTour, we make travel hassle-free and memorable! Our expertly curated tour packages ensure you experience the best destinations with ease. Whether you need a local travel guide, flight or train tickets, or comfortable hotel stays, we've got you covered. Let us handle the details while you enjoy the journey! 🌍✈️🏨
               </p>
               <div className="grid grid-cols-2 gap-4 my-4">
                 <div>
@@ -249,6 +256,7 @@ const Index = () => {
               <a
                 href="#"
                 className="bg-primary text-white px-4 py-2 inline-block mt-1"
+                onClick={handleBookNowClick}
               >
                 Book Now
               </a>
@@ -471,6 +479,15 @@ const Index = () => {
                   </div>
                 </div>
               </div>
+              <div className="px-4 pb-4">
+                <a 
+                  href="#" 
+                  className="bg-primary text-white w-full py-2 inline-block text-center"
+                  onClick={handleBookNowClick}
+                >
+                  Book Now
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -521,6 +538,15 @@ const Index = () => {
                   Great deals on premium hotel stays
                 </li>
               </ul>
+              <div className="mt-6">
+                <a
+                  href="#"
+                  onClick={handleBookNowClick}
+                  className="bg-primary text-white py-3 px-6 inline-block"
+                >
+                  Book Now
+                </a>
+              </div>
             </div>
             <div>
               <div className="card border-0">
@@ -563,12 +589,12 @@ const Index = () => {
                             destinationName:"Destination 3"
                           },
                         ].map((e)=>{
-return(
-  <option value={e.id}>{e.destinationName}</option>
-)
-                          })
-                        }
-                      </select>
+                          return(
+                            <option value={e.id}>{e.destinationName}</option>
+                          )
+                        })
+                      }
+                    </select>
                     </div>
                     <div>
                       <button

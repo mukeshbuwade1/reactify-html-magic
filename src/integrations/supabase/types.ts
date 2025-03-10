@@ -9,6 +9,39 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      booking_queries: {
+        Row: {
+          budget_per_person: number
+          created_at: string
+          destination: string
+          id: string
+          name: string
+          number_of_people: number
+          phone_number: string
+          travel_date: string
+        }
+        Insert: {
+          budget_per_person: number
+          created_at?: string
+          destination: string
+          id?: string
+          name: string
+          number_of_people: number
+          phone_number: string
+          travel_date: string
+        }
+        Update: {
+          budget_per_person?: number
+          created_at?: string
+          destination?: string
+          id?: string
+          name?: string
+          number_of_people?: number
+          phone_number?: string
+          travel_date?: string
+        }
+        Relationships: []
+      }
       "Map My Tour": {
         Row: {
           created_at: string
