@@ -128,19 +128,13 @@ const Index = () => {
     setIsSubmitting(true);
 
     try {
-      // Get current date for travel_date (default to 30 days from now)
-      const travelDate = new Date();
-      travelDate.setDate(travelDate.getDate() + 30);
-      
+      // Use the new callback_requests table
       const { error } = await supabase
-        .from('booking_queries')
+        .from('callback_requests')
         .insert({
           name: callbackName,
           phone_number: callbackPhone,
           destination: callbackDestination,
-          travel_date: travelDate.toISOString().split('T')[0], // Format as YYYY-MM-DD
-          budget_per_person: 0, // Default value since not collected
-          number_of_people: 1, // Default value since not collected
         });
 
       if (error) {
