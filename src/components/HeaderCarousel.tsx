@@ -64,7 +64,7 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 ,bookNo
             <div className="absolute inset-0 bg-black bg-opacity-30"></div>
             <div className="carousel-caption absolute inset-0 flex flex-col items-center justify-center text-center">
               <div className="p-3 max-w-4xl mx-auto">
-                <h4 className="text-white text-uppercase mb-3 text-lg md:text-xl">TOURS & TRAVEL</h4>
+                <h4 className="text-white text-uppercase mb-3 text-lg md:text-xl font-semibold">TOURS & TRAVEL</h4>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 leading-tight">Discover Amazing Places With Us</h1>
                 <a href="#" onClick={bookNowClick} className="bg-primary text-white py-3 px-8 inline-block mt-4 text-lg font-medium hover:bg-opacity-90 transition-all">Book Now</a>
               </div>
