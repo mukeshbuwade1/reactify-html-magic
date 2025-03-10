@@ -549,9 +549,9 @@ const Index = () => {
               </div>
             </div>
             <div>
-              <div className="card border-0">
+            <div className="card border-0">
                 <div className="bg-primary text-center p-4">
-                  <h1 className="text-white m-0">Sign Up Now</h1>
+                  <h1 className="text-white m-0">Get A Call Back</h1>
                 </div>
                 <div className="bg-white p-5 rounded-b">
                   <form>
@@ -565,13 +565,21 @@ const Index = () => {
                     </div>
                     <div className="mb-4">
                       <input
-                        type="email"
+                        type="number"
                         className="w-full p-4 border"
-                        placeholder="Your email"
+                        placeholder="Your Mobile Number"
                         required
                       />
                     </div>
                     <div className="mb-4">
+                      <input
+                        type="text"
+                        className="w-full p-4 border"
+                        placeholder="Destination"
+                        required
+                      />
+                    </div>
+                    {/* <div className="mb-4">
                       <select className="w-full p-4 border">
                         <option selected>Select a destination</option>
                         {
@@ -589,19 +597,19 @@ const Index = () => {
                             destinationName:"Destination 3"
                           },
                         ].map((e)=>{
-                          return(
-                            <option value={e.id}>{e.destinationName}</option>
-                          )
-                        })
-                      }
-                    </select>
-                    </div>
+return(
+  <option value={e.id}>{e.destinationName}</option>
+)
+                          })
+                        }
+                      </select>
+                    </div> */}
                     <div>
                       <button
                         className="w-full bg-primary text-white py-3"
                         type="submit"
                       >
-                        Sign Up Now
+                        Request Now
                       </button>
                     </div>
                   </form>
