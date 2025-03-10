@@ -6,9 +6,10 @@ import { useBookNowDialog } from '../hooks/useBookNowDialog';
 
 interface HeaderCarouselProps {
   interval?: number;
+  bookNowClick?:(e: React.MouseEvent)=>void
 }
 
-const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
+const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 ,bookNowClick}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const { openDialog } = useBookNowDialog();
   
@@ -31,7 +32,7 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
 
   const handleBookNowClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    openDialog();
+    bookNowClick();
   };
 
   return (

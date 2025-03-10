@@ -214,7 +214,7 @@ const Index = () => {
       {/* Navbar End */}
 
       {/* Carousel Start */}
-      <HeaderCarousel />
+      <HeaderCarousel bookNowClick={handleBookNowClick} />
       {/* Carousel End */}
 
       {/* Booking Start */}
