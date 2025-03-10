@@ -59,12 +59,15 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
 
     try {
+      // Format the date as a string in ISO format (YYYY-MM-DD)
+      const formattedDate = travelDate.toISOString().split('T')[0];
+      
       // Insert booking query into Supabase
       const { error } = await supabase.from('booking_queries').insert({
         name,
         phone_number: phoneNumber,
         destination,
-        travel_date: travelDate,
+        travel_date: formattedDate,
         budget_per_person: parseFloat(budgetPerPerson),
         number_of_people: parseInt(numberOfPeople, 10)
       });
