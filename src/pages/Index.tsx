@@ -31,12 +31,26 @@ import TestimonialCarousel from "../components/TestimonialCarousel";
 import BookingForm from "../components/BookingForm";
 import BookNowDialog from "../components/BookNowDialog";
 import { useBookNowDialog } from "../hooks/useBookNowDialog";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isOpen, openDialog, closeDialog } = useBookNowDialog();
+  const { toast } = useToast();
+
+  // Form states for Get A Call Back
+  const [callbackName, setCallbackName] = useState("");
+  const [callbackPhone, setCallbackPhone] = useState("");
+  const [callbackDestination, setCallbackDestination] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    destination: ""
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,6 +85,92 @@ const Index = () => {
   const handleBookNowClick = (e: React.MouseEvent) => {
     e.preventDefault();
     openDialog();
+  };
+
+  // Validate form fields
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {
+      name: "",
+      phone: "",
+      destination: ""
+    };
+
+    if (!callbackName.trim()) {
+      errors.name = "Name is required";
+      isValid = false;
+    }
+
+    if (!callbackPhone.trim()) {
+      errors.phone = "Phone number is required";
+      isValid = false;
+    } else if (!/^\+?\d{10,15}$/.test(callbackPhone.trim())) {
+      errors.phone = "Please enter a valid phone number";
+      isValid = false;
+    }
+
+    if (!callbackDestination.trim()) {
+      errors.destination = "Destination is required";
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
+
+  const handleCallbackSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Get current date for travel_date (default to 30 days from now)
+      const travelDate = new Date();
+      travelDate.setDate(travelDate.getDate() + 30);
+      
+      const { error } = await supabase
+        .from('booking_queries')
+        .insert({
+          name: callbackName,
+          phone_number: callbackPhone,
+          destination: callbackDestination,
+          travel_date: travelDate.toISOString().split('T')[0], // Format as YYYY-MM-DD
+          budget_per_person: 0, // Default value since not collected
+          number_of_people: 1, // Default value since not collected
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Request Submitted",
+        description: "We will get back to you soon!",
+      });
+
+      // Reset form
+      setCallbackName("");
+      setCallbackPhone("");
+      setCallbackDestination("");
+      setFormErrors({
+        name: "",
+        phone: "",
+        destination: ""
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -554,62 +654,53 @@ const Index = () => {
                   <h1 className="text-white m-0">Get A Call Back</h1>
                 </div>
                 <div className="bg-white p-5 rounded-b">
-                  <form>
+                  <form onSubmit={handleCallbackSubmit}>
                     <div className="mb-4">
                       <input
                         type="text"
-                        className="w-full p-4 border"
+                        className={`w-full p-4 border ${formErrors.name ? 'border-red-500' : 'border-gray-300'}`}
                         placeholder="Your name"
+                        value={callbackName}
+                        onChange={(e) => setCallbackName(e.target.value)}
                         required
                       />
-                    </div>
-                    <div className="mb-4">
-                      <input
-                        type="number"
-                        className="w-full p-4 border"
-                        placeholder="Your Mobile Number"
-                        required
-                      />
+                      {formErrors.name && (
+                        <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
+                      )}
                     </div>
                     <div className="mb-4">
                       <input
                         type="text"
-                        className="w-full p-4 border"
-                        placeholder="Destination"
+                        className={`w-full p-4 border ${formErrors.phone ? 'border-red-500' : 'border-gray-300'}`}
+                        placeholder="Your Mobile Number"
+                        value={callbackPhone}
+                        onChange={(e) => setCallbackPhone(e.target.value)}
                         required
                       />
+                      {formErrors.phone && (
+                        <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>
+                      )}
                     </div>
-                    {/* <div className="mb-4">
-                      <select className="w-full p-4 border">
-                        <option selected>Select a destination</option>
-                        {
-                          [
-                            {
-                            id:1,
-                            destinationName:"Destination 1"
-                          },
-                            {
-                            id:2,
-                            destinationName:"Destination 2"
-                          },
-                            {
-                            id:3,
-                            destinationName:"Destination 3"
-                          },
-                        ].map((e)=>{
-return(
-  <option value={e.id}>{e.destinationName}</option>
-)
-                          })
-                        }
-                      </select>
-                    </div> */}
+                    <div className="mb-4">
+                      <input
+                        type="text"
+                        className={`w-full p-4 border ${formErrors.destination ? 'border-red-500' : 'border-gray-300'}`}
+                        placeholder="Destination"
+                        value={callbackDestination}
+                        onChange={(e) => setCallbackDestination(e.target.value)}
+                        required
+                      />
+                      {formErrors.destination && (
+                        <p className="text-red-500 text-sm mt-1">{formErrors.destination}</p>
+                      )}
+                    </div>
                     <div>
                       <button
-                        className="w-full bg-primary text-white py-3"
+                        className="w-full bg-primary text-white py-3 flex justify-center items-center"
                         type="submit"
+                        disabled={isSubmitting}
                       >
-                        Request Now
+                        {isSubmitting ? 'Processing...' : 'Request Now'}
                       </button>
                     </div>
                   </form>
