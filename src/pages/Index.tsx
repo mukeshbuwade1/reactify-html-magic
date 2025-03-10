@@ -83,19 +83,19 @@ const Index = () => {
               </p>
             </div>
             <div className="flex items-center">
-              <a href="#" className="text-primary px-3">
+              <a href="https://www.facebook.com/share/18D6nkSw6Z/?mibextid=wwXIfr" target="_blank" className="text-primary px-3">
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>
-              <a href="#" className="text-primary px-3">
+              {/* <a href="" className="text-primary px-3">
                 <FontAwesomeIcon icon={faTwitter} />
-              </a>
-              <a href="#" className="text-primary px-3">
+              </a> */}
+              <a href="https://www.linkedin.com/company/106526320/admin/dashboard/" target="_blank" className="text-primary px-3">
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
-              <a href="#" className="text-primary px-3">
+              <a href="https://www.instagram.com/mapmytour.in" target="_blank" className="text-primary px-3">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="#" className="text-primary pl-3">
+              <a href="https://youtube.com/@mapmytour?si=pE_7wImIWIk7nhMq" target="_blank" className="text-primary pl-3">
                 <FontAwesomeIcon icon={faYoutube} />
               </a>
             </div>
@@ -114,10 +114,8 @@ const Index = () => {
           }}>
             <div className="flex justify-between items-center py-3 px-4">
               <a href="/" className="navbar-brand flex-shrink-0">
-                <h1 className="m-0 text-3xl">
-                  <span className="text-dark">TRAVEL</span>
-                  <span className="text-primary">ER</span>
-                </h1>
+                <img className="hidden sm:flex h-[30px]" src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/fullLogo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9mdWxsTG9nby5wbmciLCJpYXQiOjE3NDE1ODUzNTUsImV4cCI6MTg5OTI2NTM1NX0.5_NtBChxFgWPnW9yUcjHZlRrqn0p2Nwpx5RwUbhZcfc"/>
+                <img className="flex sm:hidden h-[30px]" src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/logoIcon.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9sb2dvSWNvbi5wbmciLCJpYXQiOjE3NDE1ODY0MDMsImV4cCI6MTc1NDU0NjQwM30.vYYPoSuivLsQ6NlVPqqZrghhsS89k1ekl1sg1ppXWeU" />
               </a>
               <button
                 className="lg:hidden text-dark"
@@ -234,16 +232,13 @@ const Index = () => {
               >
                 About Us
               </h6>
-              <h1 className="text-3xl mb-3">
+              <h1 className="text-4xl mb-3 font-semibold">
                 We Provide Best Tour Packages In Your Budget
               </h1>
-              <p>
-                Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam
-                dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr
-                stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat
-                sed diam duo
+              <p className="font-light text-gray-500">
+              At MapMyTour, we make travel hassle-free and memorable! Our expertly curated tour packages ensure you experience the best destinations with ease. Whether you need a local travel guide, flight or train tickets, or comfortable hotel stays, we’ve got you covered. Let us handle the details while you enjoy the journey! 🌍✈️🏨
               </p>
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-2 gap-4 my-4">
                 <div>
                   <img className="w-full" src="/img/about-1.jpg" alt="" />
                 </div>
@@ -274,10 +269,9 @@ const Index = () => {
               />
             </div>
             <div className="flex flex-col">
-              <h5>Competitive Pricing</h5>
-              <p className="m-0">
-                Magna sit magna dolor duo dolor labore rebum amet elitr est diam
-                sea
+              <h5 className="font-semibold">Competitive Pricing</h5>
+              <p className="m-0 text-gray-500">
+              Get the best travel deals at unbeatable prices without compromising on quality.
               </p>
             </div>
           </div>
@@ -289,10 +283,9 @@ const Index = () => {
               />
             </div>
             <div className="flex flex-col">
-              <h5>Best Services</h5>
-              <p className="m-0">
-                Magna sit magna dolor duo dolor labore rebum amet elitr est diam
-                sea
+              <h5 className="font-semibold">Best Services</h5>
+              <p className="m-0 text-gray-500">
+              Enjoy hassle-free travel with our expert support, premium packages, and customer-first approach
               </p>
             </div>
           </div>
@@ -304,10 +297,9 @@ const Index = () => {
               />
             </div>
             <div className="flex flex-col">
-              <h5>Worldwide Coverage</h5>
-              <p className="m-0">
-                Magna sit magna dolor duo dolor labore rebum amet elitr est diam
-                sea
+              <h5 className="font-semibold">Worldwide Coverage</h5>
+              <p className="m-0 text-gray-500">
+              Explore destinations across the globe with our extensive travel network and services
               </p>
             </div>
           </div>
@@ -392,9 +384,8 @@ const Index = () => {
           <div className="service-item bg-white text-center px-6 flex items-center justify-center flex-col">
             <FontAwesomeIcon icon={faRoute} className="text-3xl mx-auto mb-4" />
             <h5 className="mb-2 font-medium text-xl">Travel Guide</h5>
-            <p className="m-0">
-              Justo sit justo eos amet tempor amet clita amet ipsum eos elitr.
-              Amet lorem est amet labore
+            <p className="m-0 text-gray-500">
+            Explore new destinations with expert travel guides who provide insights, local knowledge, and seamless experiences.
             </p>
           </div>
          <div className="service-item bg-white text-center px-6 flex items-center justify-center flex-col">
@@ -403,17 +394,15 @@ const Index = () => {
               className="text-3xl mx-auto mb-4"
             />
            <h5 className="mb-2 font-medium text-xl">Ticket Booking</h5>
-            <p className="m-0">
-              Justo sit justo eos amet tempor amet clita amet ipsum eos elitr.
-              Amet lorem est amet labore
+            <p className="m-0 text-gray-500">
+            Book flights, trains, and buses effortlessly with our reliable service, ensuring the best prices and smooth travel.
             </p>
           </div>
          <div className="service-item bg-white text-center px-6 flex items-center justify-center flex-col">
             <FontAwesomeIcon icon={faHotel} className="text-3xl mx-auto mb-4" />
            <h5 className="mb-2 font-medium text-xl">Hotel Booking</h5>
-            <p className="m-0">
-              Justo sit justo eos amet tempor amet clita amet ipsum eos elitr.
-              Amet lorem est amet labore
+            <p className="m-0 text-gray-500">
+            Find and book top-rated hotels with great amenities, ensuring a comfortable and stress-free stay
             </p>
           </div>
         </div>
@@ -493,44 +482,43 @@ const Index = () => {
         <div className="container mx-auto py-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="mb-5 lg:mb-0">
-              <div className="mb-4">
+              <div className="mb-4 ">
                 <h6
-                  className="text-primary uppercase"
+                  className="text-primary uppercase bg-[rgba(255,255,255,0.7)] inline px-2"
                   style={{ letterSpacing: "5px" }}
                 >
                   Mega Offer
                 </h6>
-                <h1 className="text-white">
-                  <span className="text-primary">30% OFF</span> For Honeymoon
+                <h1 className="text-white text-4xl mt-2 font-semibold">
+                  Get up to <span style={{
+                    color:"rgba(245, 49, 49)"
+                  }} >50% </span>Discount
                 </h1>
               </div>
               <p className="text-white">
-                Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
-                dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
-                Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                dolor
+              Save big on your next trip with our exclusive discounts! Enjoy up to 50% off on tour packages, tickets, and hotels. Book now and make your dream vacation affordable!
               </p>
-              <ul className="list-none text-white m-0">
-                <li className="py-2">
+              <ul className="list-none text-white m-0 mt-3">
+                <li className="py-1">
                   <FontAwesomeIcon
                     icon={faCheck}
                     className="text-primary mr-3"
                   />
-                  Labore eos amet dolor amet diam
+                  Exclusive tour package discounts
                 </li>
-                <li className="py-2">
+                <li className="py-1">
                   <FontAwesomeIcon
                     icon={faCheck}
                     className="text-primary mr-3"
                   />
-                  Etsea et sit dolor amet ipsum
+                  Lowest prices on flight, train, and bus tickets
                 </li>
-                <li className="py-2">
+                <li className="py-1">
                   <FontAwesomeIcon
                     icon={faCheck}
                     className="text-primary mr-3"
                   />
-                  Diam dolor diam elitripsum vero.
+                  Great deals on premium hotel stays
                 </li>
               </ul>
             </div>
@@ -560,9 +548,26 @@ const Index = () => {
                     <div className="mb-4">
                       <select className="w-full p-4 border">
                         <option selected>Select a destination</option>
-                        <option value="1">Destination 1</option>
-                        <option value="2">Destination 2</option>
-                        <option value="3">Destination 3</option>
+                        {
+                          [
+                            {
+                            id:1,
+                            destinationName:"Destination 1"
+                          },
+                            {
+                            id:2,
+                            destinationName:"Destination 2"
+                          },
+                            {
+                            id:3,
+                            destinationName:"Destination 3"
+                          },
+                        ].map((e)=>{
+return(
+  <option value={e.id}>{e.destinationName}</option>
+)
+                          })
+                        }
                       </select>
                     </div>
                     <div>
@@ -630,8 +635,8 @@ const Index = () => {
                 </div>
               </div>
               <div className="text-center py-4">
-                <h5 className="truncate">Guide Name</h5>
-                <p className="m-0">Designation</p>
+                <h5 className="truncate font-semibold">Mukesh Buwade</h5>
+                <p className="m-0 text-gray-500">Guide</p>
               </div>
             </div>
           ))}
@@ -640,7 +645,7 @@ const Index = () => {
       {/* Team End */}
 
       {/* Testimonial Start */}
-      <div className="container mx-auto py-12">
+      {/* <div className="container mx-auto py-12">
         <div className="text-center mb-8">
           <h6
             className="text-primary uppercase"
@@ -651,11 +656,11 @@ const Index = () => {
           <h1 className="text-3xl">What Say Our Clients</h1>
         </div>
         <TestimonialCarousel />
-      </div>
+      </div> */}
       {/* Testimonial End */}
 
       {/* Blog Start */}
-      <div className="container mx-auto py-12">
+      {/* <div className="container mx-auto py-12">
         <div className="text-center mb-8">
           <h6
             className="text-primary uppercase"
@@ -699,7 +704,7 @@ const Index = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
       {/* Blog End */}
 
       {/* Footer Start */}
@@ -707,14 +712,16 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-5">
             <div className="mb-5">
-              <a href="/" className="navbar-brand">
-                <h1 className="text-primary">
+              <a href="/" className="navbar-brand" >
+                {/* <h1 className="text-primary">
                   <span className="text-white">TRAVEL</span>ER
-                </h1>
+                </h1> */}
+                <img src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/logoWithPunchLine.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9sb2dvV2l0aFB1bmNoTGluZS5wbmciLCJpYXQiOjE3NDE1OTE3MjIsImV4cCI6MTg5OTI3MTcyMn0.2VDuzFc8T7wi6p-P6loRzozVYVZGPllBlVKUEj0jP1I"
+                className="h-[50px] bg-gray-100"
+                />
               </a>
               <p>
-                Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet
-                labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor
+              Our expertly curated tour packages ensure you experience the best destinations with ease.
               </p>
               <h6
                 className="text-white uppercase mt-4 mb-3"
@@ -723,17 +730,20 @@ const Index = () => {
                 Follow Us
               </h6>
               <div className="flex">
-                <a className="btn btn-outline-primary mr-2" href="#">
+                {/* <a className="btn btn-outline-primary mr-2" href="#">
                   <FontAwesomeIcon icon={faTwitter} />
-                </a>
-                <a className="btn btn-outline-primary mr-2" href="#">
-                  <FontAwesomeIcon icon={faFacebookF} />
-                </a>
-                <a className="btn btn-outline-primary mr-2" href="#">
+                </a> */}
+                {/* <a className="btn btn-outline-primary mr-2" href="https://www.facebook.com/share/18D6nkSw6Z/?mibextid=wwXIfr" target="_blank">
+                  <FontAwesomeIcon icon={faFacebook} />
+                </a> */}
+                <a className="btn btn-outline-primary mr-2" href="https://www.linkedin.com/company/106526320/admin/dashboard/" target="_blank">
                   <FontAwesomeIcon icon={faLinkedinIn} />
                 </a>
-                <a className="btn btn-outline-primary" href="#">
+                <a className="btn btn-outline-primary mr-2" href="https://www.instagram.com/mapmytour.in" target="_blank">
                   <FontAwesomeIcon icon={faInstagram} />
+                </a>
+                <a className="btn btn-outline-primary" href="https://youtube.com/@mapmytour?si=pE_7wImIWIk7nhMq" target="_blank">
+                  <FontAwesomeIcon icon={faYoutube} />
                 </a>
               </div>
             </div>
@@ -747,31 +757,31 @@ const Index = () => {
               <div className="flex flex-col">
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  About
+                  Holidays Package
                 </a>
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Destination
+                 Cab Service
                 </a>
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Services
+                  Ticket Booking
                 </a>
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Packages
+                  Guide Service
                 </a>
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Guides
+                  Air Ticket
                 </a>
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Testimonial
+                  Destination Wedding
                 </a>
                 <a className="text-white-50" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Blog
+                  Event Management
                 </a>
               </div>
             </div>
@@ -785,35 +795,20 @@ const Index = () => {
               <div className="flex flex-col">
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  About
+                  Privacy Policy 
                 </a>
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Destination
+                  Terms & Conditions
                 </a>
                 <a className="text-white-50 mb-2" href="#">
                   <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Services
+                  Cancellation & Refund Policy
                 </a>
-                <a className="text-white-50 mb-2" href="#">
-                  <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Packages
-                </a>
-                <a className="text-white-50 mb-2" href="#">
-                  <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Guides
-                </a>
-                <a className="text-white-50 mb-2" href="#">
-                  <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Testimonial
-                </a>
-                <a className="text-white-50" href="#">
-                  <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-                  Blog
-                </a>
+                
               </div>
             </div>
-            <div className="mb-5">
+            <div className="mb-5" >
               <h5
                 className="text-white uppercase mb-4"
                 style={{ letterSpacing: "5px" }}
@@ -822,15 +817,15 @@ const Index = () => {
               </h5>
               <p>
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
-                123 Street, New York, USA
+                Panchsheel Nagar, Chhindwara - 480001 (Near of Sdo Office Chhindwara Collectorate Office)
               </p>
               <p>
                 <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
-                +012 345 67890
+                (+91) 8858399439 / 9424971195
               </p>
               <p>
                 <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-                info@example.com
+                info@mapmytour.in
               </p>
               <h6
                 className="text-white uppercase mt-4 mb-3"
@@ -861,13 +856,13 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
             <div className="text-center lg:text-left mb-3 lg:mb-0">
               <p className="m-0 text-white-50">
-                Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.
+                Copyright &copy; <a href="#">M<span style={{color:"rgb(245, 49, 49)"}}>a</span>pMyTour</a>. All Rights Reserved.
               </p>
             </div>
             <div className="text-center lg:text-right">
-              <p className="m-0 text-white-50">
+              {/* <p className="m-0 text-white-50">
                 Designed by <a href="https://htmlcodex.com">HTML Codex</a>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

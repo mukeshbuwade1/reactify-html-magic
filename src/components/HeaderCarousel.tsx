@@ -67,13 +67,13 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ interval = 5000 }) => {
         {/* Navigation Buttons */}
         <button 
           onClick={handlePrev}
-          className="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 w-[45px] h-[45px] flex items-center justify-center bg-dark text-white hover:bg-opacity-80"
+          className="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 w-[45px] h-[45px] flex items-center justify-center  bg-[#00000044]  text-white hover:bg-[#00000088]"
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button 
           onClick={handleNext}
-          className="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 w-[45px] h-[45px] flex items-center justify-center bg-dark text-white hover:bg-opacity-80"
+          className="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 w-[45px] h-[45px] flex items-center justify-center bg-[#00000044]  text-white hover:bg-[#00000088]"
         >
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
