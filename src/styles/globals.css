@@ -164,7 +164,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .service-item:hover,
 .service-item.active {
-  background: var(--primary);
+  background: "#fff";
+  box-shadow: 0px 10px 10px #00000011;
 }
 
 .service-item h5,
@@ -176,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 .service-item:hover p,
 .service-item.active h5,
 .service-item.active p {
-  color: #FFFFFF !important;
+  /* color: #FFFFFF !important; */
 }
 
 .package-item {

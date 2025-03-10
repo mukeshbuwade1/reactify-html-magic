@@ -21,13 +21,21 @@ const TestimonialCarousel: React.FC = () => {
   return (
     <OwlCarousel options={carouselOptions} className="testimonial-carousel">
       {[1, 2, 3, 4].map((testimonial, index) => (
-        <div key={index} className="testimonial-item">
-          <div className="text-center">
-            <img className="mx-auto rounded-full w-24 h-24 object-cover" src={`/img/testimonial-${testimonial}.jpg`} alt="Client" />
-            <div className="bg-white p-4 mt-[-20px] relative shadow-md">
-              <p className="mt-5">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-              <h5 className="truncate">Client Name</h5>
-              <span>Profession</span>
+        <div key={index} className="testimonial-item" style={{
+          padding:"0 10px 0 10px",
+          maxWidth:"400px"
+        }}>
+          <div className="text-center ">
+            
+            <img className="mx-auto   z-10" src={`/img/testimonial-${testimonial}.jpg`} alt="Client" style={{
+              height:"100px",
+              width:"100px",
+              position:"relative"
+            }} />
+            <div className="bg-white p-4 pt-[50px] mt-[-50px] relative shadow-md z-0">
+              <p className="mt-5 text-gray-500 text-base">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+              <h5 className="truncate text-lg mt-3">Client Name</h5>
+              <span className='text-gray-500'>Profession</span>
             </div>
           </div>
         </div>
