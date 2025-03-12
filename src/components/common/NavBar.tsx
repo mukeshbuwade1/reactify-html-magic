@@ -31,7 +31,7 @@ export default function NavBar({ isHome }:{ isHome?:boolean }) {
               <FontAwesomeIcon icon={faBars} className="text-2xl" />
             </button>
             <div className="hidden lg:flex items-center">
-              <a className="px-4 py-2 nav-item nav-link active" href="/">
+              <a className="px-4 py-2 nav-item nav-link active" onClick={() => nav("/")}>
                 Home
               </a>
               {isHome && (
@@ -42,7 +42,7 @@ export default function NavBar({ isHome }:{ isHome?:boolean }) {
                   <a className="px-4 py-2 nav-item nav-link" href="#service">
                     Services
                   </a>
-                  <a className="px-4 py-2 nav-item nav-link" href="#destination">
+                  <a className="px-4 py-2 nav-item nav-link" href="#destination"> 
                     Tour Packages
                   </a>
                 </>
