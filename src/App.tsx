@@ -39,5 +39,5 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
-// /destination/:id
+
 export default App;

@@ -1,15 +1,50 @@
+
 import FooterNote from "@/components/common/FooterNote";
 import NavBar from "@/components/common/NavBar";
 import PageHeader from "@/components/common/PageHeader";
 import Package from "@/components/emptyscreen/Package";
-import { allCities } from "@/constant";
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { fetchSubDestinations } from "@/utils/supabaseQueries";
+import React, { useEffect, useState } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 export default function CityList() {
   const nav = useNavigate();
   const { id, name } = useParams();
+  const location = useLocation();
+  const [subDestinations, setSubDestinations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
+  
+  // Get destinationId from location state or use the index as a fallback
+  const destinationId = location.state?.destinationId;
+
+  useEffect(() => {
+    const loadSubDestinations = async () => {
+      try {
+        setLoading(true);
+        if (destinationId) {
+          const data = await fetchSubDestinations(destinationId);
+          setSubDestinations(data);
+        } else {
+          // If no destinationId is provided, show empty state
+          setSubDestinations([]);
+        }
+      } catch (error) {
+        console.error("Error loading sub-destinations:", error);
+        toast({
+          title: "Error",
+          description: "Failed to load destinations. Please try again later.",
+          variant: "destructive",
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadSubDestinations();
+  }, [destinationId, toast]);
+
   return (
     <div className="min-h-screen bg-gray-100">
       <PageHeader />
@@ -24,12 +59,17 @@ export default function CityList() {
           </h6>
           <h1 className="text-3xl">{name} Tour Packages</h1>
         </div>
-        {allCities[id].length > 0 ? (
+        
+        {loading ? (
+          <div className="flex justify-center items-center h-60">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          </div>
+        ) : subDestinations.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allCities[id].map((dest, index) => (
+            {subDestinations.map((dest) => (
               <div
-                key={index}
-                className="destination-item relative overflow-hidden mb-4"
+                key={dest.id}
+                className="destination-item relative overflow-hidden mb-4 cursor-pointer"
               >
                 <img
                   className="w-full h-60 object-cover"
@@ -37,11 +77,11 @@ export default function CityList() {
                   alt={dest.name}
                 />
                 <div
-                  onClick={() => nav(`/packages/:${dest.destinationId}`)}
+                  onClick={() => nav(`/packages/${dest.id}`, { state: { subDestinationName: dest.name } })}
                   className="destination-overlay text-white no-underline"
                 >
                   <h5 className="text-white">{dest.name}</h5>
-                  <span>{dest.cities}</span>
+                  <span>{dest.packages_count}</span>
                 </div>
               </div>
             ))}
