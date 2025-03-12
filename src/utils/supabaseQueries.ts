@@ -1,4 +1,3 @@
-
 import { supabase } from "@/integrations/supabase/client";
 
 // Fetch all destinations
@@ -79,7 +78,7 @@ export const fetchPackagesByEnumId = async (enumId: number) => {
   return data || [];
 };
 
-// Fetch featured packages (for the homepage)
+// Fetch featured packages (for the homepage and all packages page)
 export const fetchFeaturedPackages = async (limit = 6) => {
   const { data, error } = await supabase
     .from('packages')

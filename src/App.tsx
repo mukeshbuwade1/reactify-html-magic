@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import ContactUs from "./pages/ContactUs";
 import CityList from "./pages/CityList";
 import PackagesList from "./pages/PackagesList";
+import AllPackages from "./pages/AllPackages";
 
 const queryClient = new QueryClient();
 
@@ -21,10 +22,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          {/* These routes will be implemented later as needed */}
           <Route path="/about" element={<NotFound />} />
           <Route path="/service" element={<NotFound />} />
-          <Route path="/package" element={<NotFound />} />
+          <Route path="/package" element={<AllPackages />} />
           <Route path="/blog" element={<NotFound />} />
           <Route path="/single" element={<NotFound />} />
           <Route path="/destination" element={<NotFound />} />
