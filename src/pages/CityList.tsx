@@ -73,7 +73,7 @@ export default function CityList() {
               >
                 <img
                   className="w-full h-60 object-cover"
-                  src={`/img/${dest.img}`}
+                  src={dest.img}
                   alt={dest.name}
                 />
                 <div
