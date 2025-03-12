@@ -2,6 +2,9 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Globe } from 'lucide-react';
 import { useToast } from "../hooks/use-toast";
+import PageHeader from '@/components/common/PageHeader';
+import NavBar from '@/components/common/NavBar';
+import FooterNote from '@/components/common/FooterNote';
 
 const ContactUs = () => {
   const { toast } = useToast();
@@ -74,6 +77,9 @@ const ContactUs = () => {
   };
 
   return (
+    <>
+    <PageHeader/>
+    <NavBar/>
     <div className="container mx-auto py-16 px-4">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-2">Contact Us</h1>
@@ -83,26 +89,26 @@ const ContactUs = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <div className="bg-white p-6 shadow-md rounded-md flex flex-col items-center text-center">
           <div className="bg-primary bg-opacity-10 p-4 rounded-full mb-4">
-            <MapPin className="h-8 w-8 text-primary" />
+            <MapPin className="h-8 w-8 text-white" />
           </div>
           <h3 className="font-semibold text-lg mb-2">Our Location</h3>
-          <p className="text-gray-600">123 Street, New York, USA</p>
+          <p className="text-gray-600">Panchsheel Nagar, Chhindwara - 480001</p>
         </div>
 
         <div className="bg-white p-6 shadow-md rounded-md flex flex-col items-center text-center">
           <div className="bg-primary bg-opacity-10 p-4 rounded-full mb-4">
-            <Phone className="h-8 w-8 text-primary" />
+            <Phone className="h-8 w-8 text-white" />
           </div>
           <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-          <p className="text-gray-600">+012 345 6789</p>
+          <p className="text-gray-600">(+91) 9260927665</p>
         </div>
 
         <div className="bg-white p-6 shadow-md rounded-md flex flex-col items-center text-center">
           <div className="bg-primary bg-opacity-10 p-4 rounded-full mb-4">
-            <Mail className="h-8 w-8 text-primary" />
+            <Mail className="h-8 w-8 text-white" />
           </div>
           <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-          <p className="text-gray-600">info@example.com</p>
+          <p className="text-gray-600">info@mapmytour.in</p>
         </div>
       </div>
 
@@ -110,7 +116,7 @@ const ContactUs = () => {
         <div className="w-full h-96 rounded-md overflow-hidden">
           <iframe 
             className="w-full h-full"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9476519598!2d-73.99009268459422!3d40.74791397932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a4119ce269%3A0x9dec0c979b575972!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1620814421339!5m2!1sen!2sus" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3697.8746712526486!2d78.93537049999999!3d22.0543892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd56725da3c2be9%3A0x55f8a49de8553aae!2sMAHORE%20JI%20E%20PANJIYAN%20SERVICE%20PROVIDER!5e0!3m2!1sen!2sin!4v1741628503303!5m2!1sen!2sin" 
             style={{ border: 0 }} 
             allowFullScreen={true} 
             loading="lazy" 
@@ -182,6 +188,8 @@ const ContactUs = () => {
         </div>
       </div>
     </div>
+    <FooterNote/>
+    </>
   );
 };
 

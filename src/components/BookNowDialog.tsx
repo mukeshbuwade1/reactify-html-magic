@@ -77,8 +77,8 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md">
-        <div className="bg-primary text-white p-4 rounded-t-lg">
+      <div className="bg-white  shadow-xl w-full max-w-md">
+        <div className="bg-primary text-white p-4 ">
           <h2 className="text-xl font-bold">Book Your Tour</h2>
         </div>
         
@@ -88,7 +88,7 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
               <label className="block text-gray-700 mb-1">Name</label>
               <input
                 type="text"
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-2 border border-gray-300 "
                 placeholder="Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -100,7 +100,7 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
               <label className="block text-gray-700 mb-1">Phone Number</label>
               <input
                 type="tel"
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-2 border border-gray-300 "
                 placeholder="Phone Number"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
@@ -115,7 +115,7 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
               </label>
               <input
                 type="text"
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-2 border border-gray-300 "
                 placeholder="Where do you want to go?"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
@@ -130,7 +130,7 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
               </label>
               <input
                 type="date"
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-2 border border-gray-300 "
                 value={travelDate.toISOString().split('T')[0]}
                 onChange={(e) => setTravelDate(new Date(e.target.value))}
                 required
@@ -144,7 +144,7 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
               </label>
               <input
                 type="number"
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-2 border border-gray-300 "
                 min="1"
                 value={numPeople}
                 onChange={(e) => setNumPeople(parseInt(e.target.value))}
@@ -159,7 +159,7 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
               </label>
               <input
                 type="number"
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-2 border border-gray-300 "
                 min="1000"
                 value={budget}
                 onChange={(e) => setBudget(parseInt(e.target.value))}
@@ -171,14 +171,14 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose }) => {
           <div className="flex justify-end mt-6 space-x-3">
             <button
               type="button"
-              className="px-4 py-2 bg-gray-300 rounded"
+              className="px-4 py-2 bg-gray-300 "
               onClick={onClose}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-primary text-white rounded flex items-center justify-center"
+              className="px-4 py-2 bg-primary text-white  flex items-center justify-center"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "Book Now"}
