@@ -32,6 +32,7 @@ import NavBar from "@/components/common/NavBar";
 import FooterNote from "@/components/common/FooterNote";
 import BlogSection from "@/components/home/BlogSection";
 import Testimonial from "@/components/home/Testimonial";
+import PageWrapper from "@/components/PageWrapper";
 
 const Index = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -70,17 +71,12 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <PageWrapper isHome={true}>
+      
       {/* Book Now Dialog */}
       <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
 
-      {/* Topbar Start */}
-      <PageHeader />
-      {/* Topbar End */}
-
-      {/* Navbar Start */}
-      <NavBar isHome={true} />
-      {/* Navbar End */}
+     
 
       {/* Carousel Start */}
       <HeaderCarousel bookNowClick={handleBookNowClick} />
@@ -184,19 +180,19 @@ const Index = () => {
 
       {/* Footer Start */}
       <Footer />
-      <FooterNote />
+      
       {/* Footer End */}
 
       {/* Back to Top */}
       {showBackToTop && (
         <a
           onClick={scrollToTop}
-          className="btn btn-lg btn-primary btn-lg-square back-to-top cursor-pointer"
+          className="btn btn-lg btn-primary btn-lg-square back-to-top cursor-pointer pt-2"
         >
           <FontAwesomeIcon icon={faAngleDoubleUp} />
         </a>
       )}
-    </div>
+    </PageWrapper>
   );
 };
 
