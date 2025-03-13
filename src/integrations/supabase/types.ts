@@ -66,6 +66,30 @@ export type Database = {
         }
         Relationships: []
       }
+      destinations: {
+        Row: {
+          cities: string
+          created_at: string
+          id: string
+          img: string
+          name: string
+        }
+        Insert: {
+          cities: string
+          created_at?: string
+          id?: string
+          img: string
+          name: string
+        }
+        Update: {
+          cities?: string
+          created_at?: string
+          id?: string
+          img?: string
+          name?: string
+        }
+        Relationships: []
+      }
       "Map My Tour": {
         Row: {
           created_at: string
@@ -80,6 +104,97 @@ export type Database = {
           id?: number
         }
         Relationships: []
+      }
+      packages: {
+        Row: {
+          created_at: string
+          duration: string
+          enum_id: number | null
+          id: string
+          info: string
+          person: string
+          place: string
+          price: string
+          rating_average: number
+          rating_total: number
+          src: string
+          sub_destination_id: string
+        }
+        Insert: {
+          created_at?: string
+          duration: string
+          enum_id?: number | null
+          id?: string
+          info: string
+          person: string
+          place: string
+          price: string
+          rating_average: number
+          rating_total: number
+          src: string
+          sub_destination_id: string
+        }
+        Update: {
+          created_at?: string
+          duration?: string
+          enum_id?: number | null
+          id?: string
+          info?: string
+          person?: string
+          place?: string
+          price?: string
+          rating_average?: number
+          rating_total?: number
+          src?: string
+          sub_destination_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "packages_sub_destination_id_fkey"
+            columns: ["sub_destination_id"]
+            isOneToOne: false
+            referencedRelation: "sub_destinations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sub_destinations: {
+        Row: {
+          created_at: string
+          destination_id: string
+          enum_id: number | null
+          id: string
+          img: string
+          name: string
+          packages_count: string
+        }
+        Insert: {
+          created_at?: string
+          destination_id: string
+          enum_id?: number | null
+          id?: string
+          img: string
+          name: string
+          packages_count: string
+        }
+        Update: {
+          created_at?: string
+          destination_id?: string
+          enum_id?: number | null
+          id?: string
+          img?: string
+          name?: string
+          packages_count?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sub_destinations_destination_id_fkey"
+            columns: ["destination_id"]
+            isOneToOne: false
+            referencedRelation: "destinations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
