@@ -39,13 +39,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-  background-color: var(--primary);
+  background-color: #ffffff33;
   border-color: var(--primary);
 }
 
 .btn-primary:hover {
-  background-color: #689f28;
-  border-color: #689f28;
+  background-color: #35353577;
+  border-color: #35353577;
 }
 
 .btn-lg-square {

@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEnvelope,
-  faPhoneAlt,
   faAngleDoubleUp,
-  faBars,
   faMoneyBillWave,
   faTrophy,
   faGlobeAmericas,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebookF,
-  faLinkedinIn,
-  faInstagram,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
 import "../styles/globals.css";
 import HeaderCarousel from "../components/HeaderCarousel";
 import BookingForm from "../components/BookingForm";
@@ -23,15 +14,9 @@ import { useBookNowDialog } from "../hooks/useBookNowDialog";
 import TopDestination from "@/components/home/TopDestination";
 import Services from "@/components/home/Services";
 import Packages from "@/components/home/Packages";
-import TravelGuides from "@/components/home/TravelGuides";
 import Footer from "@/components/home/Footer";
 import OfferSection from "@/components/home/OfferSection";
 import About from "@/components/home/About";
-import PageHeader from "@/components/common/PageHeader";
-import NavBar from "@/components/common/NavBar";
-import FooterNote from "@/components/common/FooterNote";
-import BlogSection from "@/components/home/BlogSection";
-import Testimonial from "@/components/home/Testimonial";
 import PageWrapper from "@/components/PageWrapper";
 
 const Index = () => {
