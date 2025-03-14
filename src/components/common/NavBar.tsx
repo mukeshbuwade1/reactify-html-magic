@@ -15,9 +15,9 @@ export default function NavBar({ isHome }:{ isHome?:boolean }) {
       <nav className={`navbar top-0 lg:top-12 bg-transparent`}>
         <div
         // w-full lg:w-4/5 
-          className={`container mx-auto shadow-md  shadow-2xl p-0  lg:px-[26px]`} 
+          className={`container mx-auto  p-0  lg:px-[26px]`} 
         >
-          <div className="flex justify-between bg-white items-center py-3 px-4">
+          <div className="flex justify-between bg-white items-center py-3 px-4 shadow-md  shadow-2xl">
             <a href="/" className="navbar-brand flex-shrink-0 h-[30px]">
               <img
                 className="flex h-[60px] -mt-[15px]"

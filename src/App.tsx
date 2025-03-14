@@ -11,6 +11,7 @@ import CityList from "./pages/CityList";
 import PackagesList from "./pages/PackagesList";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PackageDetails from "./pages/PackageDetails";
+import FAQPage from "./pages/FAQ";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/guide" element={<NotFound />} />
           <Route path="/testimonial" element={<NotFound />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/faqs" element={<FAQPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/city/:id/:name" element={<CityList />} />
           <Route path="/packages/:destinationId" element={<PackagesList />} />

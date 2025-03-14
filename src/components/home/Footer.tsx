@@ -101,6 +101,10 @@ export default function Footer() {
               <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
               Cancellation & Refund Policy
             </a>
+            <a className="text-white-50 mb-2 cursor-pointer" onClick={()=>nav("/faqs")}>
+              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+              FAQs
+            </a>
             
           </div>
         </div>
