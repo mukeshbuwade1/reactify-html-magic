@@ -14,18 +14,15 @@ export default function NavBar({ isHome }:{ isHome?:boolean }) {
     <>
       <nav className={`navbar top-0 lg:top-12 bg-transparent`}>
         <div
-          className={`container mx-auto shadow-md bg-white shadow-2xl w-full lg:w-4/5`}
+        // w-full lg:w-4/5 
+          className={`container mx-auto shadow-md  shadow-2xl `} 
         >
-          <div className="flex justify-between items-center py-3 px-4">
-            <a href="/" className="navbar-brand flex-shrink-0">
+          <div className="flex justify-between bg-white items-center py-3 px-4">
+            <a href="/" className="navbar-brand flex-shrink-0 h-[30px]">
               <img
-                className="hidden sm:flex h-[30px]"
-                src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/fullLogo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9mdWxsTG9nby5wbmciLCJpYXQiOjE3NDE1ODUzNTUsImV4cCI6MTg5OTI2NTM1NX0.5_NtBChxFgWPnW9yUcjHZlRrqn0p2Nwpx5RwUbhZcfc"
-              />
-              <img
-                className="flex sm:hidden h-[30px]"
-                src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/fullLogo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9mdWxsTG9nby5wbmciLCJpYXQiOjE3NDE1ODUzNTUsImV4cCI6MTg5OTI2NTM1NX0.5_NtBChxFgWPnW9yUcjHZlRrqn0p2Nwpx5RwUbhZcfc"
-              />
+                className="flex h-[60px] -mt-[15px]"
+                src="/img/logo.svg"
+                />
             </a>
             <button className="lg:hidden text-dark" onClick={toggleMobileMenu}>
               <FontAwesomeIcon icon={faBars} className="text-2xl" />
@@ -94,7 +91,7 @@ export default function NavBar({ isHome }:{ isHome?:boolean }) {
           </div>
         </div>
       </nav>
-
+      {/* </div> </div> */}
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="mobile-menu lg:hidden">
