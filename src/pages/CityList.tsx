@@ -1,4 +1,4 @@
-
+import PageWrapper from "@/components/PageWrapper";
 import FooterNote from "@/components/common/FooterNote";
 import NavBar from "@/components/common/NavBar";
 import PageHeader from "@/components/common/PageHeader";
@@ -46,9 +46,7 @@ export default function CityList() {
   }, [destinationId, toast]);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <PageHeader />
-      <NavBar />
+    <PageWrapper>
       <div className="container mx-auto py-12 mt-6">
         <div className="text-center mb-8">
           <h6
@@ -90,7 +88,6 @@ export default function CityList() {
           <Package />
         )}
       </div>
-      <FooterNote />
-    </div>
+      </PageWrapper>
   );
 }

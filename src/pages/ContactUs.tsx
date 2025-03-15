@@ -5,6 +5,7 @@ import { useToast } from "../hooks/use-toast";
 import PageHeader from '@/components/common/PageHeader';
 import NavBar from '@/components/common/NavBar';
 import FooterNote from '@/components/common/FooterNote';
+import PageWrapper from '@/components/PageWrapper';
 
 const ContactUs = () => {
   const { toast } = useToast();
@@ -77,9 +78,8 @@ const ContactUs = () => {
   };
 
   return (
-    <>
-    <PageHeader/>
-    <NavBar/>
+    <PageWrapper>
+    
     <div className="container mx-auto py-16 px-4">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-2">Contact Us</h1>
@@ -188,8 +188,8 @@ const ContactUs = () => {
         </div>
       </div>
     </div>
-    <FooterNote/>
-    </>
+   
+    </PageWrapper>
   );
 };
 

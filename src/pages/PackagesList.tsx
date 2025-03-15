@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import PageWrapper from "@/components/PageWrapper";
 
 export default function PackagesList() {
   const { destinationId } = useParams();
@@ -60,10 +61,9 @@ export default function PackagesList() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <PageWrapper>
       <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
-      <PageHeader />
-      <NavBar />
+      
       <div className="container mx-auto py-12">
         <div className="text-center mb-8">
           <h6
@@ -147,7 +147,6 @@ export default function PackagesList() {
           <Package />
         )}
       </div>
-      <FooterNote />
-    </div>
+      </PageWrapper>
   );
 }
