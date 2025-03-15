@@ -68,7 +68,7 @@ const TermsAndConditions = () => {
             <strong>We will not entertain any credit facility.</strong>
           </li>
           <li>
-            <strong>Prices:</strong> All prices displayed are in [INR] and are
+            <strong>Prices:</strong> All prices displayed are in INR and are
             subject to change without notice. Final prices will be confirmed at
             the time of booking.
           </li>

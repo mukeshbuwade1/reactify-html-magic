@@ -1,10 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import PageWrapper from "@/components/PageWrapper";
-import { whatWeOffer } from "@/constant";
+import { whatWeOffer, whyChooseUs } from "@/constant";
 
 const AboutUs = () => {
   return (
@@ -82,30 +80,35 @@ const AboutUs = () => {
               ))}
             </div>
           </div>
-       
+
           <h2 className="text-2xl font-bold text-primary my-4 text-center">
             Why Choose Map My Tour?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              "Personalized Service",
-              "Expert Local Knowledge",
-              "Reliability and Trust",
-              "Commitment to Sustainability",
-            ].map((item, index) => (
-              <div key={index} className="flex items-center">
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  className="text-primary mr-2"
-                />
-                <span className="text-gray-600">{item}</span>
-              </div>
-            ))}
+          <div className="container mx-auto pb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {whyChooseUs.map((e, idx) => (
+                <div className="flex mb-4" key={`${e.id}_${idx}`}>
+                  <div className="flex-shrink-0 flex items-center justify-center bg-primary mr-3 h-[100px] w-[100px]">
+                    <FontAwesomeIcon
+                      icon={e.icon}
+                      className="text-2xl text-white"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <h5 className="font-semibold">{e.heading}</h5>
+                    <p className="m-0 text-gray-500">{e.info}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+
           <p className="text-gray-600 mt-8 ">
-            <i>"Join the Map My Tour family today and let us help you create the
-            trip of a lifetime. Start your journey with us, and let’s map out
-            the adventure you’ve been dreaming of!"</i>
+            <i>
+              "Join the Map My Tour family today and let us help you create the
+              trip of a lifetime. Start your journey with us, and let’s map out
+              the adventure you’ve been dreaming of!"
+            </i>
           </p>
         </div>
       </div>

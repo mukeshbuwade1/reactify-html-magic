@@ -36,7 +36,7 @@ const PaymentPolicy = () => {
         </li>
         <li>
           <strong>Deposit Requirement:</strong> For most bookings, a deposit is required to confirm your reservation. The
-          deposit amount varies depending on the type of service booked. Typically, a deposit of [Insert Amount] is
+          deposit amount varies depending on the type of service booked. Typically, a deposit of 45% is
           required for tours and packages, while full payment may be required for flights, certain hotels, or special
           packages at the time of booking.
         </li>
@@ -46,7 +46,7 @@ const PaymentPolicy = () => {
       <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">2. Payment Deadlines</h2>
       <ul className="list-disc list-inside mb-6">
         <li>
-          <strong>Full Payment:</strong> Full payment is generally required [Insert Number of Days] days before your
+          <strong>Full Payment:</strong> Full payment is generally required 7 days before your
           departure or the start of the service. If your booking is made less than [Insert Number of Days] days before
           the departure date, full payment is due at the time of booking.
         </li>
@@ -68,11 +68,11 @@ const PaymentPolicy = () => {
       <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">4. Currency and Pricing</h2>
       <ul className="list-disc list-inside mb-6">
         <li>
-          <strong>Currency:</strong> All prices on our website and in our quotes are displayed in [Insert Currency].
+          <strong>Currency:</strong> All prices on our website and in our quotes are displayed in INR.
           Payments will be processed in this currency unless otherwise stated.
         </li>
         <li>
-          <strong>Currency Exchange:</strong> If you are making payment in a currency other than [Insert Currency],
+          <strong>Currency Exchange:</strong> If you are making payment in a currency other than INR,
           please note that exchange rates may apply, and you may be subject to additional fees from your bank or payment
           provider.
         </li>
@@ -87,7 +87,7 @@ const PaymentPolicy = () => {
           refund.
         </li>
         <li>
-          <strong>Refund Processing Time:</strong> Once a refund is approved, it may take [Insert Number of Days]
+          <strong>Refund Processing Time:</strong> Once a refund is approved, it may take 7
           business days for the funds to appear in your account, depending on your payment method and financial
           institution.
         </li>
