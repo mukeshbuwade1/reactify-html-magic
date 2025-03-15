@@ -93,11 +93,15 @@ export default function Footer() {
               <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
               Privacy Policy 
             </a>
-            <a className="text-white-50 mb-2 cursor-pointer"  onClick={()=>nav("/privacy-policy")}>
+            <a className="text-white-50 mb-2 cursor-pointer" onClick={()=>nav("/payment-policy")}>
+              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+              Payment Policy 
+            </a>
+            <a className="text-white-50 mb-2 cursor-pointer"  onClick={()=>nav("/terms-and-conditions")}>
               <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
               Terms & Conditions
             </a>
-            <a className="text-white-50 mb-2 cursor-pointer" onClick={()=>nav("/privacy-policy/#cancellation")}>
+            <a className="text-white-50 mb-2 cursor-pointer" onClick={()=>nav("/terms-and-conditions/#cancellation")}>
               <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
               Cancellation & Refund Policy
             </a>

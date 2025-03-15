@@ -12,6 +12,9 @@ import PackagesList from "./pages/PackagesList";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PackageDetails from "./pages/PackageDetails";
 import FAQPage from "./pages/FAQ";
+import AboutUs from "./pages/AboutUs";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PaymentPolicy from "./pages/PaymentPolicy";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +28,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           {/* These routes will be implemented later as needed */}
-          <Route path="/about" element={<NotFound />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/service" element={<NotFound />} />
           <Route path="/package" element={<NotFound />} />
           <Route path="/blog" element={<NotFound />} />
@@ -35,6 +38,8 @@ const App = () => (
           <Route path="/testimonial" element={<NotFound />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/faqs" element={<FAQPage />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/payment-policy" element={<PaymentPolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/city/:id/:name" element={<CityList />} />
           <Route path="/packages/:destinationId" element={<PackagesList />} />

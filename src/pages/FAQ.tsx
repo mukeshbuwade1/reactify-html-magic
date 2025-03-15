@@ -72,8 +72,9 @@ const FAQPage = () => {
             you’re looking for, feel free to contact us directly.
           </p>
           <div className="space-y-4">
-            {isLoading && <FAQSkeletonLoader />}
-            {faqs.length > 0 ? (
+            {isLoading ? (
+              <FAQSkeletonLoader />
+            ) : faqs.length > 0 ? (
               faqs.map((faq, index) => (
                 <div key={index} className="border  overflow-hidden">
                   <button

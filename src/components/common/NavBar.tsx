@@ -3,43 +3,55 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function NavBar({ isHome }:{ isHome?:boolean }) {
+export default function NavBar({ isHome }: { isHome?: boolean }) {
   const nav = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (route?: string) => {
     setMobileMenuOpen(!mobileMenuOpen);
+    if (route) {
+      nav(route);
+    }
   };
   return (
     <>
       <nav className={`navbar top-0 lg:top-12 bg-transparent`}>
         <div
-        // w-full lg:w-4/5 
-          className={`container mx-auto  p-0  lg:px-[26px]`} 
+          // w-full lg:w-4/5
+          className={`container mx-auto  p-0  lg:px-[26px]`}
         >
           <div className="flex justify-between bg-white items-center py-3 px-4 shadow-md  shadow-2xl">
-            <a href="/" className="navbar-brand flex-shrink-0 h-[30px]">
-              <img
-                className="flex h-[60px] -mt-[15px]"
-                src="/img/logo.svg"
-                />
+            <a
+              onClick={() => nav("/")}
+              className="navbar-brand flex-shrink-0 h-[30px]"
+            >
+              <img className="flex h-[60px] -mt-[15px]" src="/img/logo.svg" />
             </a>
-            <button className="lg:hidden text-dark" onClick={toggleMobileMenu}>
+            <button className="lg:hidden text-dark" onClick={()=>toggleMobileMenu()}>
               <FontAwesomeIcon icon={faBars} className="text-2xl" />
             </button>
             <div className="hidden lg:flex items-center">
-              <a className="px-4 py-2 nav-item nav-link active" onClick={() => nav("/")}>
+              <a
+                className="px-4 py-2 nav-item nav-link active"
+                onClick={() => nav("/")}
+              >
                 Home
+              </a>
+              <a
+                className="px-4 py-2 nav-item nav-link"
+                onClick={() => nav("/about")}
+              >
+                About
               </a>
               {isHome && (
                 <>
-                  <a className="px-4 py-2 nav-item nav-link" href="#about">
-                    About
-                  </a>
                   <a className="px-4 py-2 nav-item nav-link" href="#service">
                     Services
                   </a>
-                  <a className="px-4 py-2 nav-item nav-link" href="#destination"> 
+                  <a
+                    className="px-4 py-2 nav-item nav-link"
+                    href="#destination"
+                  >
                     Tour Packages
                   </a>
                 </>
@@ -95,26 +107,46 @@ export default function NavBar({ isHome }:{ isHome?:boolean }) {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="mobile-menu lg:hidden">
-          <a className="block px-4 py-2 nav-item nav-link active" onClick={toggleMobileMenu} href="/">
+          <a
+            className="block px-4 py-2 nav-item nav-link active"
+            onClick={()=>toggleMobileMenu("/")}
+           
+          >
             Home
           </a>
-          {isHome && (
-                <>
-          <a className="block px-4 py-2 nav-item nav-link" onClick={toggleMobileMenu} href="#about">
+          <a
+            className="block px-4 py-2 nav-item nav-link"
+            onClick={()=>toggleMobileMenu("/about")}
+          >
             About
           </a>
-          <a className="block px-4 py-2 nav-item nav-link" onClick={toggleMobileMenu} href="#service">
-            Services
-          </a>
-          <a className="block px-4 py-2 nav-item nav-link" onClick={toggleMobileMenu} href="#destination">
-            Tour Packages
-          </a>
-          </>
-              )}
+          {isHome && (
+            <>
+              <a
+                className="block px-4 py-2 nav-item nav-link"
+                onClick={()=>toggleMobileMenu()}
+                href="#service"
+              >
+                Services
+              </a>
+              <a
+                className="block px-4 py-2 nav-item nav-link"
+                onClick={()=>toggleMobileMenu()}
+                href="#destination"
+              >
+                Tour Packages
+              </a>
+            </>
+          )}
           {/* <a className="block px-4 py-2 nav-item nav-link" href="/pages">
             Pages
           </a> */}
-          <a className="block px-4 py-2 nav-item nav-link"  onClick={() => {toggleMobileMenu();nav("/contact")}}>
+          <a
+            className="block px-4 py-2 nav-item nav-link"
+            onClick={() => {
+              toggleMobileMenu("/contact");
+            }}
+          >
             Contact
           </a>
         </div>
