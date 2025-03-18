@@ -1,4 +1,4 @@
-import { faCalendarCheck, faGlobeAmericas, faHeadset, faMoneyBillWave, faSuitcase, faTrophy, faUserTie, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarCheck, faGlobeAmericas, faHandshake, faHeadset, faLeaf, faLightbulb, faMoneyBillWave, faShield, faSuitcase, faTrophy, faUserTie, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export const whatWeOffer =[
   {
@@ -54,25 +54,25 @@ export const whatWeOffer =[
 export const whyChooseUs = [
   {
     id:3,
-    icon: faGlobeAmericas,
+    icon: faHandshake ,
     heading:"Personalized Service",
     info:"We understand that each traveller is unique. That’s why we take the time to get to know you and tailor your itinerary to your individual needs."
   },
   {
     id:3,
-    icon: faGlobeAmericas,
+    icon: faLightbulb,
     heading:"Expert Local Knowledge",
     info:"Our team consists of passionate travel experts who know the destinations we offer inside and out. We work with local partners to bring you authentic and off-the-beaten-path experiences."
   },
   {
     id:3,
-    icon: faGlobeAmericas,
+    icon: faShield,
     heading:"Reliability and Trust",
     info:"Over the years, we’ve built a reputation for providing reliable, high-quality travel services. When you book with us, you can trust that your trip will be seamless and well-planned."
   },
   {
     id:3,
-    icon: faGlobeAmericas,
+    icon:  faLeaf,
     heading:"Commitment to Sustainability",
     info:"We believe in responsible travel that benefits local communities and minimizes environmental impact. Our team is committed to offering sustainable travel options wherever possible."
   },

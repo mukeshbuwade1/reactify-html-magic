@@ -63,7 +63,9 @@ export default function TopDestination() {
                 onClick={() => nav(`/city/${index}/${dest.name}`, { state: { destinationId: dest.id } })}
                 className="destination-overlay text-white no-underline"
               >
-                <h5 className="text-white">{dest.name}</h5>
+                <h5 className="text-white text-lg" style={{
+                  textShadow:"0 0 10px #000"
+                }}>{dest.name}</h5>
                 <span>{dest.cities}</span>
               </div>
             </div>

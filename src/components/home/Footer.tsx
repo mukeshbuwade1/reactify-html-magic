@@ -69,10 +69,6 @@ export default function Footer() {
             </a>
             <a className="text-white-50 mb-2 cursor-default" href="#">
               <FontAwesomeIcon icon={faCircle} className="mr-2" />
-              Air Ticket
-            </a>
-            <a className="text-white-50 mb-2 cursor-default" href="#">
-              <FontAwesomeIcon icon={faCircle} className="mr-2" />
               Destination Wedding
             </a>
             <a className="text-white-50 cursor-default" href="#">

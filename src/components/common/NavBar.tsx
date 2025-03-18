@@ -32,24 +32,24 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
             </button>
             <div className="hidden lg:flex items-center">
               <a
-                className="px-4 py-2 nav-item nav-link active"
+                className="px-4 py-2 nav-item nav-link cursor-pointer active"
                 onClick={() => nav("/")}
               >
                 Home
               </a>
               <a
-                className="px-4 py-2 nav-item nav-link"
+                className="px-4 py-2 nav-item nav-link cursor-pointer"
                 onClick={() => nav("/about")}
               >
                 About
               </a>
               {isHome && (
                 <>
-                  <a className="px-4 py-2 nav-item nav-link" href="#service">
+                  <a className="px-4 py-2 nav-item nav-link cursor-pointer" href="#service">
                     Services
                   </a>
                   <a
-                    className="px-4 py-2 nav-item nav-link"
+                    className="px-4 py-2 nav-item nav-link cursor-pointer"
                     href="#destination"
                   >
                     Tour Packages
@@ -94,7 +94,7 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
                 </div>
               </div> */}
               <span
-                className="px-4 py-2 nav-item nav-link"
+                className="px-4 py-2 nav-item nav-link cursor-pointer"
                 onClick={() => nav("/contact")}
               >
                 Contact

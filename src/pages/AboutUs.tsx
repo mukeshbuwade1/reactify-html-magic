@@ -47,7 +47,7 @@ const AboutUs = () => {
             hidden gems, booking your dream vacation, or planning the adventure
             of a lifetime, we’re here to make it happen.
           </p>
-          <h2 className="text-2xl font-bold text-primary mt-14 text-center">
+          <h2 className="text-2xl font-bold text-primary mt-10 text-center">
             Our Mission
           </h2>
           <p className="text-gray-600">
@@ -59,7 +59,7 @@ const AboutUs = () => {
             adventures, cultural explorations, or luxury retreats, we’ve got you
             covered.
           </p>
-          <h2 className="text-2xl font-bold text-primary mt-14 mb-4 text-center">
+          <h2 className="text-2xl font-bold text-primary mt-10 mb-4 text-center">
             What We Offer
           </h2>
           <div className="container mx-auto pb-12">
