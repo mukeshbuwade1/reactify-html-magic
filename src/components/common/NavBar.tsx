@@ -1,7 +1,11 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useOpenAuthModal } from "@/hooks/useOpenAuthModal";
+import {  faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthModal } from "../auth/AuthModal";
+import { useAuth } from "@/hooks/useAuth";
+import { Button } from "../ui/button";
 
 export default function NavBar({ isHome }: { isHome?: boolean }) {
   const nav = useNavigate();
@@ -13,8 +17,13 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
       nav(route);
     }
   };
+
+  const { isOpenAuth,openDialog : openAuthDialog, closeDialog } = useOpenAuthModal();
+
+  const { session } = useAuth();
   return (
     <>
+     <AuthModal isOpen={isOpenAuth} onOpenChange={closeDialog} />
       <nav className={`navbar top-0 lg:top-12 bg-transparent`}>
         <div
           // w-full lg:w-4/5
@@ -99,6 +108,25 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
               >
                 Contact
               </span>
+
+              {session ? (
+             <span
+             className="ml-2 nav-item nav-link cursor-pointer w-9 h-9 flex justify-center items-center bg-black rounded-[40px]"
+             onClick={()=>{
+               nav("/profile")
+             }}
+           >
+            <FontAwesomeIcon icon={faUser} className="text-white" />
+           </span>
+            ) : (
+              <>
+                <Button variant="outline" className="ml-4 " onClick={() => openAuthDialog()} style={{
+                  border:"2px solid black"
+                }}>
+                  Sign In
+                </Button>
+              </>
+            )}
             </div>
           </div>
         </div>
