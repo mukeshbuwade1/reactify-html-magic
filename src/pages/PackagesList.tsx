@@ -1,4 +1,3 @@
-
 import BookNowDialog from "@/components/BookNowDialog";
 import FooterNote from "@/components/common/FooterNote";
 import NavBar from "@/components/common/NavBar";
@@ -14,8 +13,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import PageWrapper from "@/components/PageWrapper";
+import { getPackageName } from "@/utils/getPackageName";
 
 export default function PackagesList() {
   const { destinationId } = useParams();
@@ -24,9 +25,10 @@ export default function PackagesList() {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
-  
+
   // Get subDestinationName from location state
-  const subDestinationName = location.state?.subDestinationName || "Tour";
+  const  subDestinationName = getPackageName(location.state?.subDestinationName )|| "Tour";
+
 
   useEffect(() => {
     const loadPackages = async () => {
@@ -58,12 +60,15 @@ export default function PackagesList() {
     e.preventDefault();
     openDialog();
   };
+  const nav = useNavigate();
+  const navigateToDetails = (packageId) => {
+    // nav("/package-details/:1");
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <PageWrapper>
       <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
-      <PageHeader />
-      <NavBar />
+
       <div className="container mx-auto py-12">
         <div className="text-center mb-8">
           <h6
@@ -74,7 +79,7 @@ export default function PackagesList() {
           </h6>
           <h1 className="text-3xl">{subDestinationName} Tour Packages</h1>
         </div>
-        
+
         {loading ? (
           <div className="flex justify-center items-center h-60">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
@@ -82,7 +87,11 @@ export default function PackagesList() {
         ) : packages.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {packages.map((pkg) => (
-              <div key={pkg.id} className="package-item bg-white mb-4 shadow-sm">
+              <div
+                key={pkg.id}
+                className="package-item bg-white mb-4 shadow-sm"
+                onClick={navigateToDetails}
+              >
                 <img
                   className="w-full h-48 object-cover"
                   src={pkg.src}
@@ -147,7 +156,6 @@ export default function PackagesList() {
           <Package />
         )}
       </div>
-      <FooterNote />
-    </div>
+    </PageWrapper>
   );
 }

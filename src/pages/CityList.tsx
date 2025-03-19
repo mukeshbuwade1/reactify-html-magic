@@ -1,4 +1,4 @@
-
+import PageWrapper from "@/components/PageWrapper";
 import FooterNote from "@/components/common/FooterNote";
 import NavBar from "@/components/common/NavBar";
 import PageHeader from "@/components/common/PageHeader";
@@ -7,15 +7,17 @@ import { fetchSubDestinations } from "@/utils/supabaseQueries";
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { getPackageName } from "@/utils/getPackageName";
 
 export default function CityList() {
   const nav = useNavigate();
-  const { id, name } = useParams();
+  const { name } = useParams();
+
   const location = useLocation();
   const [subDestinations, setSubDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
-  
+
   // Get destinationId from location state or use the index as a fallback
   const destinationId = location.state?.destinationId;
 
@@ -46,9 +48,7 @@ export default function CityList() {
   }, [destinationId, toast]);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <PageHeader />
-      <NavBar />
+    <PageWrapper>
       <div className="container mx-auto py-12 mt-6">
         <div className="text-center mb-8">
           <h6
@@ -57,9 +57,9 @@ export default function CityList() {
           >
             Destination
           </h6>
-          <h1 className="text-3xl">{name} Tour Packages</h1>
+          <h1 className="text-3xl">{getPackageName(name)} Tour Packages</h1>
         </div>
-        
+
         {loading ? (
           <div className="flex justify-center items-center h-60">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
@@ -77,7 +77,11 @@ export default function CityList() {
                   alt={dest.name}
                 />
                 <div
-                  onClick={() => nav(`/packages/${dest.id}`, { state: { subDestinationName: dest.name } })}
+                  onClick={() =>
+                    nav(`/packages/${dest.id}`, {
+                      state: { subDestinationName: dest.name },
+                    })
+                  }
                   className="destination-overlay text-white no-underline"
                 >
                   <h5 className="text-white">{dest.name}</h5>
@@ -90,7 +94,6 @@ export default function CityList() {
           <Package />
         )}
       </div>
-      <FooterNote />
-    </div>
+    </PageWrapper>
   );
 }

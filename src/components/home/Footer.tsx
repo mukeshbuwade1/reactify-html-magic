@@ -1,9 +1,11 @@
 import { faInstagram, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { faAngleRight, faEnvelope, faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAngleRight, faCircle, faEnvelope, faMapMarkerAlt, faPhone, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Footer() {
+  const nav = useNavigate()
   return (
     <div className="bg-dark text-white-50 py-5 mt-12">
     <div className="container mx-auto">
@@ -49,32 +51,28 @@ export default function Footer() {
             Our Services
           </h5>
           <div className="flex flex-col">
-            <a className="text-white-50 mb-2" href="#">
-              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+            <a className="text-white-50 mb-2 cursor-default" href="#">
+              <FontAwesomeIcon icon={faCircle} className="mr-2" />
               Holidays Package
             </a>
-            <a className="text-white-50 mb-2" href="#">
-              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+            <a className="text-white-50 mb-2 cursor-default" href="#">
+              <FontAwesomeIcon icon={faCircle} className="mr-2" />
              Cab Service
             </a>
-            <a className="text-white-50 mb-2" href="#">
-              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+            <a className="text-white-50 mb-2 cursor-default" href="#">
+              <FontAwesomeIcon icon={faCircle} className="mr-2" />
               Ticket Booking
             </a>
-            <a className="text-white-50 mb-2" href="#">
-              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+            <a className="text-white-50 mb-2 cursor-default" href="#">
+              <FontAwesomeIcon icon={faCircle} className="mr-2" />
               Guide Service
             </a>
-            <a className="text-white-50 mb-2" href="#">
-              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
-              Air Ticket
-            </a>
-            <a className="text-white-50 mb-2" href="#">
-              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+            <a className="text-white-50 mb-2 cursor-default" href="#">
+              <FontAwesomeIcon icon={faCircle} className="mr-2" />
               Destination Wedding
             </a>
-            <a className="text-white-50" href="#">
-              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+            <a className="text-white-50 cursor-default" href="#">
+              <FontAwesomeIcon icon={faCircle} className="mr-2" />
               Event Management
             </a>
           </div>
@@ -87,17 +85,25 @@ export default function Footer() {
             Useful Links
           </h5>
           <div className="flex flex-col">
-            <a className="text-white-50 mb-2" href="#">
+            <a className="text-white-50 mb-2 cursor-pointer" onClick={()=>nav("/privacy-policy")}>
               <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
               Privacy Policy 
             </a>
-            <a className="text-white-50 mb-2" href="#">
+            <a className="text-white-50 mb-2 cursor-pointer" onClick={()=>nav("/payment-policy")}>
+              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+              Payment Policy 
+            </a>
+            <a className="text-white-50 mb-2 cursor-pointer"  onClick={()=>nav("/terms-and-conditions")}>
               <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
               Terms & Conditions
             </a>
-            <a className="text-white-50 mb-2" href="#">
+            <a className="text-white-50 mb-2 cursor-pointer" onClick={()=>nav("/terms-and-conditions/#cancellation")}>
               <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
               Cancellation & Refund Policy
+            </a>
+            <a className="text-white-50 mb-2 cursor-pointer" onClick={()=>nav("/faqs")}>
+              <FontAwesomeIcon icon={faAngleRight} className="mr-2" />
+              FAQs
             </a>
             
           </div>
@@ -114,7 +120,7 @@ export default function Footer() {
             Panchsheel Nagar, Chhindwara - 480001 (Near of Sdo Office Chhindwara Collectorate Office)
           </p>
           <p>
-            <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
+            <FontAwesomeIcon icon={faPhone} className="mr-2" />
             (+91) 9260927665
           </p>
           <p>

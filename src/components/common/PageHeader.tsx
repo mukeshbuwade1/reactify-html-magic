@@ -1,5 +1,5 @@
 import { faFacebookF, faInstagram, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
@@ -15,7 +15,7 @@ export default function PageHeader() {
           </p>
           <p className="text-body px-3">|</p>
           <p className="m-0">
-            <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
+            <FontAwesomeIcon icon={faPhone} className="mr-2" />
             +91 9260927665
           </p>
         </div>
