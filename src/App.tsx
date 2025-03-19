@@ -17,7 +17,7 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import PaymentPolicy from "./pages/PaymentPolicy";
 import ScrollToTop from "./components/ScrollToTop";
 import Profile from "./pages/Profile";
-import PasswordReset from "./components/auth/PassWordReset";
+import PasswordReset from "./components/auth/PasswordReset";
 
 const queryClient = new QueryClient();
 
