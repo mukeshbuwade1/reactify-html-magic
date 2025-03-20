@@ -1,10 +1,12 @@
-
+import React, { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
-import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { validateIndianMobileNumber, validatePassword } from "./utils";
 
 interface SignupFormProps {
   onLoginClick: () => void;
@@ -12,25 +14,57 @@ interface SignupFormProps {
 }
 
 export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    password: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [validation, setValidation] = useState({
+    valid: true,
+    message: "",
+    validNumber: true,
+  });
   const { toast } = useToast();
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { id, value } = e.target;
+      setFormData((prev) => ({ ...prev, [id]: value }));
+
+      if (id === "password") {
+        const validationObj = validatePassword(value);
+        setValidation((prev) => ({ ...prev, ...validationObj }));
+      } else if (id === "mobile") {
+        const isValid = validateIndianMobileNumber(value);
+        setValidation((prev) => ({ ...prev, validNumber: isValid }));
+      }
+    },
+    []
+  );
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validation.valid || !validation.validNumber) {
+      toast({
+        title: "Error",
+        description: !validation.valid ? validation.message : "Invalid mobile number",
+        variant: "destructive",
+      });
+      return;
+    }
     setLoading(true);
 
     try {
       const { error, data } = await supabase.auth.signUp({
-        email,
-        password,
+        email: formData.email,
+        password: formData.password,
         options: {
           data: {
-            full_name: fullName,
-            mobile_number: mobileNumber,
+            full_name: formData.name,
+            mobile_number: formData.mobile,
           },
         },
       });
@@ -41,8 +75,7 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
         title: "Welcome!",
         description: "Please check your email to verify your account.",
       });
-      
-      // If signup was successful and we have a callback, call it
+
       if (data.user && onSuccess) {
         onSuccess();
       }
@@ -57,8 +90,12 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
     }
   };
 
+  const handlePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
-    <div className="space-y-6 px-4 py-6">
+    <div className="space-y-6 px-4 py-6 max-h-[90vh] overflow-y-auto">
       <div className="space-y-2 text-center">
         <h2 className="text-2xl font-bold">Create an account</h2>
         <p className="text-sm text-muted-foreground">
@@ -66,59 +103,50 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
         </p>
       </div>
       <form onSubmit={handleSignup} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="fullName">Full Name</Label>
-          <Input
-            id="fullName"
-            placeholder="Full Name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="mobileNumber">Mobile Number</Label>
-          <Input
-            id="mobileNumber"
-            type="tel"
-            placeholder="Mobile Number"
-            value={mobileNumber}
-            onChange={(e) => setMobileNumber(e.target.value)}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+        {/* Input fields */}
+        {["name", "email", "mobile", "password"].map((id) => (
+          <div key={id} className="space-y-2 relative">
+            <Label htmlFor={id}>{id=="mobile"?"Mobile Number":id.charAt(0).toUpperCase() + id.slice(1)}</Label>
+            <Input
+              id={id}
+              type={id === "password" ? (showPassword ? "text" : "password") : id === "email" ? "email" : id === "mobile" ? "tel" : "text"}
+              placeholder={id.charAt(0).toUpperCase() + id.slice(1)}
+              value={formData[id]}
+              onChange={handleInputChange}
+              required
+              className={id === "password" ? "pr-8" : ""}
+            />
+            {id === "password" && formData.password && (
+              <div
+                onClick={handlePasswordVisibility}
+                className="absolute top-8 right-2 cursor-pointer"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                role="button"
+                tabIndex={0}
+              >
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </div>
+            )}
+            {id === "password" && formData.password && !validation.valid && (
+              <p className="text-red-800 text-xs absolute -bottom-6 left-0">{validation.message}</p>
+            )}
+            {id === "mobile" && formData.mobile && !validation.validNumber && (
+              <p className="text-red-800 text-xs absolute -bottom-5 left-0">Invalid mobile number</p>
+            )}
+          </div>
+        ))}
+
         <Button
           type="submit"
           className="w-full"
           disabled={loading}
+          style={{ marginTop: "30px" }}
         >
           {loading ? "Creating account..." : "Create account"}
         </Button>
       </form>
       <div className="text-center text-sm">
-        Already have an account?{" "}
+        Already have an account?
         <Button variant="link" onClick={onLoginClick} className="p-0">
           Sign in
         </Button>
