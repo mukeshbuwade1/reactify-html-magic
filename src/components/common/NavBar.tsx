@@ -1,7 +1,11 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useOpenAuthModal } from "@/hooks/useOpenAuthModal";
+import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthModal } from "../auth/AuthModal";
+import { useAuth } from "@/hooks/useAuth";
+import { Button } from "../ui/button";
 
 export default function NavBar({ isHome }: { isHome?: boolean }) {
   const nav = useNavigate();
@@ -13,8 +17,17 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
       nav(route);
     }
   };
+
+  const {
+    isOpenAuth,
+    openDialog: openAuthDialog,
+    closeDialog,
+  } = useOpenAuthModal();
+
+  const { session } = useAuth();
   return (
     <>
+      <AuthModal isOpen={isOpenAuth} onOpenChange={closeDialog} />
       <nav className={`navbar top-0 lg:top-12 bg-transparent`}>
         <div
           // w-full lg:w-4/5
@@ -23,11 +36,15 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
           <div className="flex justify-between bg-white items-center py-3 px-4 shadow-md  shadow-2xl">
             <a
               onClick={() => nav("/")}
-              className="navbar-brand flex-shrink-0 h-[30px]"
+              className="navbar-brand flex flex-col items-center"
             >
-              <img className="flex h-[60px] -mt-[15px]" src="/img/logo.svg" />
+              <img className="h-[25px]" src="/img/logo.png" />
+              <p className="text-[8px] uppercase tracking-[0.4px]"><b>travel world with class</b></p>
             </a>
-            <button className="lg:hidden text-dark" onClick={()=>toggleMobileMenu()}>
+            <button
+              className="lg:hidden text-dark"
+              onClick={() => toggleMobileMenu()}
+            >
               <FontAwesomeIcon icon={faBars} className="text-2xl" />
             </button>
             <div className="hidden lg:flex items-center">
@@ -45,7 +62,10 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
               </a>
               {isHome && (
                 <>
-                  <a className="px-4 py-2 nav-item nav-link cursor-pointer" href="#service">
+                  <a
+                    className="px-4 py-2 nav-item nav-link cursor-pointer"
+                    href="#service"
+                  >
                     Services
                   </a>
                   <a
@@ -99,6 +119,30 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
               >
                 Contact
               </span>
+
+              {session ? (
+                <span
+                  className="ml-2 nav-item nav-link cursor-pointer w-9 h-9 flex justify-center items-center bg-black rounded-[40px]"
+                  onClick={() => {
+                    nav("/profile");
+                  }}
+                >
+                  <FontAwesomeIcon icon={faUser} className="text-white" />
+                </span>
+              ) : (
+                <>
+                  <Button
+                    variant="outline"
+                    className="ml-4 "
+                    onClick={() => openAuthDialog()}
+                    style={{
+                      border: "2px solid black",
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -106,17 +150,17 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
       {/* </div> </div> */}
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="mobile-menu lg:hidden">
+        <div className="mobile-menu lg:hidden ">
+        <div className="bg-white  p-[15px]">
           <a
             className="block px-4 py-2 nav-item nav-link active"
-            onClick={()=>toggleMobileMenu("/")}
-           
+            onClick={() => toggleMobileMenu("/")}
           >
             Home
           </a>
           <a
             className="block px-4 py-2 nav-item nav-link"
-            onClick={()=>toggleMobileMenu("/about")}
+            onClick={() => toggleMobileMenu("/about")}
           >
             About
           </a>
@@ -124,14 +168,14 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
             <>
               <a
                 className="block px-4 py-2 nav-item nav-link"
-                onClick={()=>toggleMobileMenu()}
+                onClick={() => toggleMobileMenu()}
                 href="#service"
               >
                 Services
               </a>
               <a
                 className="block px-4 py-2 nav-item nav-link"
-                onClick={()=>toggleMobileMenu()}
+                onClick={() => toggleMobileMenu()}
                 href="#destination"
               >
                 Tour Packages
@@ -149,7 +193,28 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
           >
             Contact
           </a>
+          {session ? (
+            <a
+              className="block px-4 py-2 nav-item nav-link"
+              onClick={() => {
+                toggleMobileMenu("/profile");
+              }}
+            >
+              View Profile
+            </a>
+          ) : (
+            <a
+              className="block px-4 py-2 nav-item nav-link"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openAuthDialog();
+              }}
+            >
+             Sign In
+            </a>
+          )}
         </div>
+      </div>
       )}
     </>
   );

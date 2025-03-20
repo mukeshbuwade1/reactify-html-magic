@@ -16,6 +16,8 @@ import AboutUs from "./pages/AboutUs";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PaymentPolicy from "./pages/PaymentPolicy";
 import ScrollToTop from "./components/ScrollToTop";
+import Profile from "./pages/Profile";
+import PasswordReset from "./components/auth/PasswordReset";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/guide" element={<NotFound />} />
           <Route path="/testimonial" element={<NotFound />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/reset-password/" element={<PasswordReset/>} />
           <Route path="/faqs" element={<FAQPage />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/payment-policy" element={<PaymentPolicy />} />
