@@ -37,17 +37,16 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
       if (id === "password") {
         const validationObj = validatePassword(value);
         setValidation((prev) => ({ ...prev, ...validationObj }));
-      } else if (id === "mobile") {
-        const isValid = validateIndianMobileNumber(value);
-        setValidation((prev) => ({ ...prev, validNumber: isValid }));
+      } else if (id === "mobile" && !validation.validNumber) {
+        setValidation((prev) => ({ ...prev, validNumber: true }));
       }
     },
-    []
+    [validation.validNumber]
   );
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validation.valid || !validation.validNumber) {
+    if (!validation.valid || !validateIndianMobileNumber(formData.mobile)) {
       toast({
         title: "Error",
         description: !validation.valid ? validation.message : "Invalid mobile number",
@@ -89,6 +88,11 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
       setLoading(false);
     }
   };
+  
+  const handleOnblur=()=>{
+    const isValid = validateIndianMobileNumber(formData.mobile);
+    setValidation((prev) => ({ ...prev, validNumber: isValid }));
+  }
 
   const handlePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -115,6 +119,7 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
               onChange={handleInputChange}
               required
               className={id === "password" ? "pr-8" : ""}
+              onBlur={id === "mobile"?handleOnblur:undefined}
             />
             {id === "password" && formData.password && (
               <div
